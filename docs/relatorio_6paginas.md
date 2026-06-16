@@ -1,6 +1,6 @@
 # Plataforma Inteligente Integrada de Monitoramento Rural
 
-### IA · Drones · IoT · Visão Computacional — Relatório de Viabilidade (Engenharia Econômica)
+## IA · Drones · IoT · Visão Computacional — Relatório de Viabilidade (Engenharia Econômica)
 
 **Equipe:** [preencher] · **Data:** [preencher]/2026 · **Produto (nome a definir)**
 
@@ -18,7 +18,7 @@ O agronegócio brasileiro opera sob margens apertadas, exigência crescente de r
 
 ## 1. Problema (a dor do cliente)
 
-M�dias e grandes fazendas de grãos perdem produtividade por **detecção tardia** de pragas, doenças, falhas de plantio e estresse hídrico, e gastam mais que o necessário com insumos por aplicação uniforme. Hoje resolvem com inspeção manual amostral e **ferramentas fragmentadas** (um app de satélite, outro fornecedor de drone, planilha de sensores, ERP à parte — sem integração). As soluções atuais falham por: (i) fragmentação dos dados; (ii) pressuposto de conectividade estável, que quebra no campo; (iii) entrega de "mapas", não de **prescrições acionáveis**; e (iv) retorno não demonstrado em R$, o que trava a adoção. A consequência prática é perda financeira recorrente que o produtor sequer mede com precisão.
+Médias e grandes fazendas de grãos perdem produtividade por **detecção tardia** de pragas, doenças, falhas de plantio e estresse hídrico, e gastam mais que o necessário com insumos por aplicação uniforme. Hoje resolvem com inspeção manual amostral e **ferramentas fragmentadas** (um app de satélite, outro fornecedor de drone, planilha de sensores, ERP à parte — sem integração). As soluções atuais falham por: (i) fragmentação dos dados; (ii) pressuposto de conectividade estável, que quebra no campo; (iii) entrega de "mapas", não de **prescrições acionáveis**; e (iv) retorno não demonstrado em R$, o que trava a adoção. A consequência prática é perda financeira recorrente que o produtor sequer mede com precisão.
 
 ## 2. Proposta de solução
 
@@ -33,7 +33,7 @@ Uma plataforma única que conecta **drones, sensores IoT e visão computacional 
 A arquitetura é organizada em camadas, o que permite um MVP enxuto e escala sem reescrever o núcleo. A separação entre borda (campo) e nuvem é a decisão central: tarefas leves e o buffer offline ficam num *gateway* na fazenda; o processamento pesado (ortomosaico, treino de modelos) fica na nuvem, com custo elástico.
 
 | Camada | Função | Racional |
-|---|---|---|
+| --- | --- | --- |
 | Captação (Edge) | Drone (RGB/multiespectral) + IoT + satélite | Redundância de fonte de dado |
 | Borda (Gateway) | Buffer offline, pré-processamento, inferência leve | Resolve conectividade intermitente; reduz custo de nuvem |
 | Processamento (Nuvem) | Ortomosaico, treino, visão computacional pesada | Escala elástica de GPU |
@@ -48,7 +48,7 @@ A arquitetura é organizada em camadas, o que permite um MVP enxuto e escala sem
 **Indicadores utilizados (e o que cada um mede):**
 
 | Indicador | O que mede | Regra de decisão |
-|---|---|---|
+| --- | --- | --- |
 | TMA | Custo de oportunidade (melhor aplicação de baixo risco) | Taxa de desconto usada no VPL |
 | VPL | Riqueza criada hoje, já descontada a TMA | Viável se VPL > 0 |
 | TIR | Taxa que zera o VPL (rentabilidade intrínseca) | Atrativo se TIR > TMA |
@@ -62,7 +62,7 @@ A arquitetura é organizada em camadas, o que permite um MVP enxuto e escala sem
 **Premissas centrais (ilustrativas — recalibrar com dados reais):**
 
 | Premissa | Valor |
-|---|---|
+| --- | --- |
 | Investimento inicial (Ano 0) | R$ 380.000 |
 | Horizonte de análise | 5 anos |
 | Curva de adoção (hectares ativos) | 25 mil → 550 mil ha |
@@ -72,7 +72,7 @@ A arquitetura é organizada em camadas, o que permite um MVP enxuto e escala sem
 **Comparação dos três modelos de receita** (à TMA recomendada de 20% a.a.):
 
 | Indicador | A) SaaS asset-light | B) DaaS frota própria | C) Híbrido (setup + SaaS) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Investimento Ano 0 | R$ 380.000 | R$ 380.000 | R$ 380.000 |
 | VPL (TMA 20%) | R$ 2.788.869 | R$ 431.690 | **R$ 2.937.891** |
 | VPL (TMA 14,5%) | R$ 3.581.113 | R$ 843.042 | R$ 3.743.110 |
@@ -92,7 +92,7 @@ A arquitetura é organizada em camadas, o que permite um MVP enxuto e escala sem
 **Fluxo de caixa do modelo recomendado (C — Híbrido):**
 
 | Ano | Receita (R$) | Custo total (R$) | Fluxo líquido (R$) | Fluxo acumulado (R$) |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 0 | — | — | −380.000 | −380.000 |
 | 1 | 716.667 | 1.115.000 | −398.333 | −778.333 |
 | 2 | 1.840.000 | 1.752.000 | 88.000 | −690.333 |
@@ -109,7 +109,7 @@ A arquitetura é organizada em camadas, o que permite um MVP enxuto e escala sem
 **Análise de sensibilidade (modelo C — o motor é a adoção):**
 
 | Cenário | Premissa | VPL (TMA 20%) | TIR | Veredito |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Otimista | adoção +25%, preço +10% | R$ 6.048.934 | 133,8% | Muito viável |
 | Base | premissas centrais | R$ 2.937.891 | 85,6% | Viável |
 | Pessimista | adoção −40%, preço −15% | −R$ 381.183 | 5,1% | **Inviável no horizonte** |
