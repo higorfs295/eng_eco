@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 600" font-family="ui-sans-serif, system-ui, Segoe UI, Roboto, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#2E5A2E"/>
+    </marker>
+    <marker id="arrowW" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#B8860B"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1220" height="600" fill="#F6F4EC"/>
+  <text x="20" y="44" font-size="26" font-weight="700" fill="#2E5A2E">Arquitetura da plataforma — do campo à decisão</text>
+  <text x="20" y="70" font-size="15" fill="#6B7264">Monitoramento rural com IA, Drones, IoT e Visão Computacional · arquitetura em camadas (MVP enxuto, escala sem reescrever o núcleo)</text>
+
+  <!-- ===== STAGES ===== -->
+  <!-- coords: 5 boxes, w=200, gap=40, x=20,260,500,740,980 ; y=130 h=210 -->
+  <g>
+    <!-- 1 Captação -->
+    <rect x="20" y="130" width="200" height="210" rx="14" fill="#FFFFFF" stroke="#E4E0D6"/>
+    <rect x="20" y="130" width="200" height="48" rx="14" fill="#2E5A2E"/>
+    <rect x="20" y="158" width="200" height="20" fill="#2E5A2E"/>
+    <text x="40" y="160" font-size="15" font-weight="700" fill="#FFFFFF">1 · Captação (Edge)</text>
+    <text x="40" y="208" font-size="13.5" fill="#1C2620">Drone RGB /</text>
+    <text x="40" y="228" font-size="13.5" fill="#1C2620">multiespectral</text>
+    <text x="40" y="258" font-size="13.5" fill="#1C2620">Sensores IoT (solo,</text>
+    <text x="40" y="278" font-size="13.5" fill="#1C2620">clima, umidade)</text>
+    <text x="40" y="308" font-size="13.5" fill="#1C2620">Satélite</text>
+    <text x="40" y="328" font-size="11.5" fill="#6B7264">redundância de fonte</text>
+
+    <!-- 2 Borda -->
+    <rect x="260" y="130" width="200" height="210" rx="14" fill="#FFFFFF" stroke="#E4E0D6"/>
+    <rect x="260" y="130" width="200" height="48" rx="14" fill="#2E5A2E"/>
+    <rect x="260" y="158" width="200" height="20" fill="#2E5A2E"/>
+    <text x="280" y="160" font-size="15" font-weight="700" fill="#FFFFFF">2 · Borda (Gateway)</text>
+    <rect x="280" y="194" width="118" height="22" rx="11" fill="#F3E9CC" stroke="#B8860B"/>
+    <text x="290" y="209" font-size="12" font-weight="700" fill="#8A6608">offline-first</text>
+    <text x="280" y="244" font-size="13.5" fill="#1C2620">Buffer offline</text>
+    <text x="280" y="268" font-size="13.5" fill="#1C2620">Pré-processamento</text>
+    <text x="280" y="292" font-size="13.5" fill="#1C2620">Inferência leve</text>
+    <text x="280" y="328" font-size="11.5" fill="#6B7264">resolve conectividade</text>
+
+    <!-- 3 Nuvem -->
+    <rect x="500" y="130" width="200" height="210" rx="14" fill="#FFFFFF" stroke="#E4E0D6"/>
+    <rect x="500" y="130" width="200" height="48" rx="14" fill="#2E5A2E"/>
+    <rect x="500" y="158" width="200" height="20" fill="#2E5A2E"/>
+    <text x="520" y="160" font-size="15" font-weight="700" fill="#FFFFFF">3 · Nuvem + Dados</text>
+    <text x="520" y="206" font-size="13.5" fill="#1C2620">Ortomosaico</text>
+    <text x="520" y="230" font-size="13.5" fill="#1C2620">Treino de modelos</text>
+    <text x="520" y="254" font-size="13.5" fill="#1C2620">Visão computacional</text>
+    <text x="520" y="288" font-size="12.5" fill="#1C2620">Dados: geoespacial +</text>
+    <text x="520" y="306" font-size="12.5" fill="#1C2620">séries temporais + imagens</text>
+    <text x="520" y="330" font-size="11.5" fill="#6B7264">escala elástica de GPU</text>
+
+    <!-- 4 Aplicação -->
+    <rect x="740" y="130" width="200" height="210" rx="14" fill="#FFFFFF" stroke="#E4E0D6"/>
+    <rect x="740" y="130" width="200" height="48" rx="14" fill="#2E5A2E"/>
+    <rect x="740" y="158" width="200" height="20" fill="#2E5A2E"/>
+    <text x="760" y="160" font-size="15" font-weight="700" fill="#FFFFFF">4 · Aplicação</text>
+    <text x="760" y="208" font-size="13.5" fill="#1C2620">Alertas priorizados</text>
+    <text x="760" y="232" font-size="13.5" fill="#1C2620">(praga / doença)</text>
+    <text x="760" y="262" font-size="13.5" fill="#1C2620">Mapas de prescrição</text>
+    <text x="760" y="282" font-size="13.5" fill="#1C2620">(taxa variável — VRT)</text>
+    <text x="760" y="312" font-size="13.5" fill="#1C2620">Produtividade/talhão</text>
+    <text x="760" y="330" font-size="11.5" fill="#6B7264">onde o dado vira decisão</text>
+
+    <!-- 5 Integração -->
+    <rect x="980" y="130" width="200" height="210" rx="14" fill="#FFFFFF" stroke="#E4E0D6"/>
+    <rect x="980" y="130" width="200" height="48" rx="14" fill="#21421F"/>
+    <rect x="980" y="158" width="200" height="20" fill="#21421F"/>
+    <text x="1000" y="160" font-size="15" font-weight="700" fill="#FFFFFF">5 · Integração</text>
+    <text x="1000" y="208" font-size="13.5" fill="#1C2620">Maquinário</text>
+    <text x="1000" y="228" font-size="13.5" fill="#1C2620">(ISOBUS / ISO-XML)</text>
+    <text x="1000" y="258" font-size="13.5" fill="#1C2620">ERP da fazenda</text>
+    <text x="1000" y="300" font-size="12.5" font-weight="700" fill="#8A6608">o "último metro"</text>
+    <text x="1000" y="318" font-size="12.5" font-weight="700" fill="#8A6608">do valor</text>
+  </g>
+
+  <!-- arrows between stages -->
+  <g stroke="#2E5A2E" stroke-width="2.5" marker-end="url(#arrow)">
+    <line x1="222" y1="235" x2="256" y2="235"/>
+    <line x1="462" y1="235" x2="496" y2="235"/>
+    <line x1="702" y1="235" x2="736" y2="235"/>
+    <line x1="942" y1="235" x2="976" y2="235"/>
+  </g>
+
+  <!-- feedback loop: dados/uso realimentam os modelos -->
+  <path d="M 820 340 C 820 430, 600 430, 600 348" fill="none" stroke="#B8860B" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#arrowW)"/>
+  <text x="600" y="455" text-anchor="middle" font-size="13" fill="#8A6608" font-weight="600">Efeito de rede de dados — cada safra melhora os modelos</text>
+
+  <!-- footer band -->
+  <text x="20" y="520" font-size="14" fill="#1C2620"><tspan font-weight="700">Faseamento:</tspan> MVP (1 fonte + 1 caso de IA + dashboard + 1 fazenda-piloto)  →  V1 (IoT, satélite, mapa de prescrição)  →  V2 (modelos preditivos, integrações, base multi-fazenda).</text>
+  <text x="20" y="552" font-size="12.5" fill="#6B7264">A separação borda/nuvem é a decisão central: tarefas leves e o buffer offline ficam no campo; o processamento pesado fica na nuvem, com custo elástico.</text>
+</svg>

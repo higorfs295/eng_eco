@@ -1,0 +1,156 @@
+================================================================================
+FONTES E REFERÊNCIAS
+Projeto: Plataforma Inteligente Integrada de Monitoramento Rural
+Disciplina: Engenharia Econômica
+Arquivo gerado em: 16/06/2026
+================================================================================
+
+COMO LER ESTE ARQUIVO
+---------------------
+As referências estão separadas por nível de confiança, porque elas NÃO são
+todas iguais:
+
+  (A) Fontes externas verificáveis — links reais, conferidos nesta data.
+  (B) Material fornecido por você (uploads) — base da disciplina e exemplos.
+  (C) Premissas do modelo SEM fonte externa — a MAIOR PARTE dos números
+      financeiros. São suposições de trabalho, não dados de mercado.
+  (D) Lacunas — dados que ainda precisam ser buscados e citados antes da
+      entrega final.
+
+Resumo honesto: do projeto inteiro, só o item (A) tem fonte externa. Todo o
+núcleo financeiro é premissa (C). O que foi "conferido" nos números financeiros
+é apenas a MATEMÁTICA (fórmulas de VPL, TIR, payback, IBC, ROIA, validadas em
+Python, Excel e JavaScript) — não a aderência à realidade.
+
+
+================================================================================
+(A) FONTES EXTERNAS VERIFICÁVEIS  (conferidas em 16/06/2026)
+================================================================================
+
+A.1 — TAXA SELIC / base da TMA
+  Dado usado: Selic = 14,50% a.a., definida na reunião do Copom de 29/04/2026.
+  - Banco Central do Brasil (fonte primária):
+    https://www.bcb.gov.br/en
+    (exibe "Last Copom Meeting 04/29/2026 — Selic 14.50%")
+  - Agência Brasil, 30/04/2026:
+    https://agenciabrasil.ebc.com.br/economia/noticia/2026-04/banco-central-reduz-juros-basicos-para-145-ao-ano
+
+  ATENÇÃO (dado sensível ao tempo): a próxima reunião do Copom é 17/06/2026.
+  O mercado projetava possível corte para ~14,25%. RECONFIRME a taxa vigente
+  na data da sua entrega/apresentação. Eu não tenho certeza da taxa que estará
+  em vigor depois de 17/06.
+  Contexto da projeção (não é decisão oficial):
+  - Remessa Online (jun/2026):
+    https://www.remessaonline.com.br/blog/reuniao-copom-junho-de-2026/
+  - InfoMoney (jun/2026):
+    https://www.infomoney.com.br/economia/reuniao-copom-selic-manutencao-corte-2026/
+
+A.2 — CONCORRENTES (agtechs reais citadas no Case)
+  Observação geral: os números de hectares vêm das próprias empresas e da
+  imprensa setorial; NÃO foram auditados de forma independente. Variam por ano.
+
+  PERFECT FLIGHT
+  - Site oficial: https://www.perfectflight.com.br
+  - Perfil: agtech de São João da Boa Vista/SP, desde ~2016; plataforma de
+    gestão e rastreabilidade de pulverização aérea.
+  - Hectares (variam por data): ~25 mi (abr/2022); ~39 mi (2023); "+30 mi" na
+    própria página institucional. Sugestão: usar "dezenas de milhões de ha"
+    para não fixar um número que envelhece.
+  - Exemplos de cobertura na imprensa:
+    https://revistaavag.org.br/perfect-flight-atinge-a-marca-de-25-milhoes-de-hectares-monitorados/
+    https://agfeed.com.br/agtech/proxima-de-anunciar-captacao-perfect-flight-esta-pronta-para-aterrissar-nos-eua/
+
+  SIMA (Sistema Integrado de Monitoramento Agrícola)
+  - Site oficial: https://sima.ag/pt
+  - Perfil: origem na Argentina (2013/2014); monitoramento georreferenciado de
+    lavouras (pragas, doenças, NDVI/RGB) com apoio de IA; foco em campo via app.
+  - Hectares: "+8 milhões de ha em 8 países da América Latina" (2025).
+  - Cobertura: https://agrorevenda.com.br/prateleira/monitoramento-por-aplicativo-da-sima-eleva-produtividade-em-fazendas/
+
+  SSCROP
+  - Site oficial: https://sscrop.com
+  - Perfil: agtech brasileira de Luís Eduardo Magalhães/BA (escritório em
+    Campinas/SP); ~500 mil ha; presente em ~17–20 estados.
+  - RESSALVA HONESTA: o SSCrop é, na prática, um software de GESTÃO agrícola
+    (financeiro, estoque, fiscal/LCDPR, comercial) — NÃO um concorrente direto
+    de monitoramento por drone/visão computacional. Cite-o como referência de
+    "gestão da fazenda", não como rival técnico equivalente à sua proposta.
+
+
+================================================================================
+(B) MATERIAL FORNECIDO POR VOCÊ (uploads desta conversa)
+================================================================================
+
+B.1 — Material/transcrição da disciplina de Engenharia Econômica
+  (arquivo "gemini-code-...md" que você enviou).
+  É a referência CONCEITUAL do método e dos indicadores usados:
+  TMA, VPL, VPLa/VAUE, TIR, payback simples e descontado, IBC, ROIA, e o
+  método de escolha entre alternativas excludentes. Verifique no PDF/material
+  oficial da disciplina o nome do professor, instituição e ano para citar.
+
+B.2 — Print da estrutura de entregáveis exigida
+  (imagem que você enviou). Define as seções 0–5 e os entregáveis
+  (apresentação ~3 min, relatório de 6 páginas, vídeo ~3 min, artigo opcional).
+
+B.3 — "hivemind_os.md"
+  Exemplo de outro projeto seu, usado apenas como referência de FORMATO.
+  Não é fonte de conteúdo do trabalho.
+
+(Esses três são seus; não há autor/edição externos que eu possa citar.)
+
+
+================================================================================
+(C) PREMISSAS DO MODELO — SEM FONTE EXTERNA  (NÃO são dados verificados)
+================================================================================
+Estes números são SUPOSIÇÕES DE TRABALHO, calibradas para serem plausíveis.
+A única coisa verificada sobre eles é a matemática feita em cima deles.
+NÃO os apresente na banca como se fossem pesquisados.
+
+  - Investimento inicial (Ano 0): R$ 380.000
+  - Horizonte de análise: 5 anos
+  - Curva de adoção: 25.000 → 550.000 hectares ao longo de 5 anos
+  - Fazenda média: 3.000 ha/cliente
+  - Preço Modelo A (SaaS): R$ 25/ha/ano
+  - Preço Modelo B (DaaS): R$ 80/ha/ano
+  - Preço Modelo C (Híbrido): R$ 22/ha/ano + R$ 20.000 de implantação/cliente
+  - Custo variável: 30% (A), 72% (B), 30% (C) da receita
+  - Custos fixos anuais: R$ 0,9 mi a R$ 6,5 mi conforme o modelo/ano
+  - DaaS: capacidade 12.000 ha/ano por unidade; CAPEX R$ 120.000/unidade
+  - TMA: piso 14,5% (= Selic, item A.1), recomendada 20% (Selic + prêmio de
+    risco), estresse 30%. A escolha de 20% e 30% é METODOLÓGICA, não uma taxa
+    observada no mercado.
+
+  Verificação matemática (não de mercado): Python + Excel (247 fórmulas, 0
+  erros) + JavaScript do painel interativo — os três batem até o real.
+
+
+================================================================================
+(D) LACUNAS — buscar e citar ANTES da entrega final
+================================================================================
+  - Conectividade rural (4G/5G no campo; % de área/propriedades conectadas):
+    foi mencionada de forma genérica no relatório. NÃO tenho fonte verificada
+    nesta sessão. Buscar em fonte oficial e datar (ex.: estudos de conectividade
+    no campo — ConectarAGRO, IICA/CEPEA, Embrapa). Não use número sem fonte.
+  - Tamanho de mercado de agricultura de precisão / agtech no Brasil: citar com
+    fonte e data.
+  - Preços reais por hectare dos concorrentes: não são publicados abertamente;
+    coletar via contato comercial ou material público.
+  - Caso real de uma fazenda do Centro-Oeste: área, cultura, PERDA média por
+    safra, gasto com insumos, horas de inspeção — para converter em
+    "R$ economizados/ano". Coletar com o produtor.
+  - Estatística "84% dos agricultores usam ao menos uma tecnologia digital"
+    (atribuída a estudo Embrapa/Sebrae/Inpe, vista em material publicitário):
+    se for usar, localizar o estudo PRIMÁRIO e confirmar número e ano.
+
+
+================================================================================
+NOTA FINAL
+================================================================================
+Sugestão de citação no relatório/artigo: para cada dado externo, cite a fonte
+e a DATA de acesso (ex.: "Banco Central do Brasil, acesso em 16/06/2026").
+Para as premissas (seção C), declare explicitamente que são suposições de
+trabalho — isso é mais forte academicamente do que fingir que são dados.
+
+Os links acima foram conferidos em 16/06/2026 e podem sair do ar ou ser
+atualizados; reconfirme antes de entregar.
+================================================================================
