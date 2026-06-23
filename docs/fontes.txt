@@ -1,449 +1,451 @@
-# LEVANTAMENTO BIBLIOGRÁFICO CONSOLIDADO
+================================================================================
+LEVANTAMENTO BIBLIOGRÁFICO CONSOLIDADO
+Projeto: Plataforma Inteligente Integrada de Monitoramento Rural
+Disciplina: Engenharia Econômica
+Versão Consolidada
+================================================================================
 
-## Projeto
+1. OBJETIVO DO DOCUMENTO
+================================================================================
 
-Sistema Inteligente para Monitoramento e Controle Agrícola utilizando Visão Computacional, Internet das Coisas (IoT), Computação em Nuvem e Inteligência Artificial
+Este documento consolida todas as referências utilizadas no desenvolvimento da
+Plataforma Inteligente Integrada de Monitoramento Rural.
 
----
+O objetivo é garantir:
 
-# REFERÊNCIAS PRIORITÁRIAS (12 FONTES BASE)
+- Fundamentação teórica consistente;
+- Rastreabilidade das informações;
+- Transparência metodológica;
+- Sustentação técnica da solução proposta;
+- Sustentação econômica da análise de viabilidade;
+- Organização das fontes para futuras consultas.
 
-## 1. Deep Learning in Agriculture: A Survey
+Total de referências principais: 17
 
-**Autores:** Kamilaris, A.; Prenafeta-Boldú, F. X.
+Composição:
 
-**Ano:** 2018
+- 12 referências prioritárias (Top 12)
+- 5 artigos científicos complementares
 
-**Periódico:** Computers and Electronics in Agriculture
+Estudo de caso adicional:
 
-**DOI:** https://doi.org/10.1016/j.compag.2018.02.016
+- WiMilk (AgroTech brasileira)
 
-**Forma de acesso:** ScienceDirect
+================================================================================
+2. METODOLOGIA DE SELEÇÃO DAS FONTES
+================================================================================
 
-### Objetivo da fonte
+As fontes foram selecionadas considerando:
 
-Apresentar um levantamento abrangente das aplicações de Deep Learning na agricultura.
+- Credibilidade institucional;
+- Revisão científica;
+- Aplicabilidade ao projeto;
+- Relevância para Agricultura Digital;
+- Relevância para Visão Computacional;
+- Relevância para Inteligência Artificial;
+- Relevância para IoT;
+- Relevância para Engenharia Econômica;
+- Disponibilidade pública para consulta.
 
-### Contribuição para o projeto
+Classificação utilizada:
 
-Fornece embasamento teórico sobre CNNs, classificação de imagens, detecção de doenças, monitoramento agrícola e automação inteligente.
+MUITO ALTA
+- Instituições oficiais
+- Artigos revisados por pares
+- Revisões sistemáticas
 
-### Aplicação no TCC
+ALTA
+- Artigos técnicos
+- Trabalhos acadêmicos
+- Divulgação científica especializada
 
-Servirá como principal referência para justificar o uso de Inteligência Artificial e Visão Computacional no sistema proposto.
+MÉDIA-ALTA
+- Relatórios de mercado
 
----
+MÉDIA-BAIXA
+- Sites comerciais
+- Soluções proprietárias
 
-## 2. A Review on the Practice of Big Data Analysis in Agriculture
+================================================================================
+3. REFERÊNCIAS PRIORITÁRIAS (TOP 12)
+================================================================================
 
-**Autores:** Kamilaris, A.; Kartakoullis, A.; Prenafeta-Boldú, F. X.
+--------------------------------------------------------------------------------
+1. EMBRAPA – Agricultura Digital e Inteligência Artificial
+--------------------------------------------------------------------------------
 
-**Ano:** 2017
+Link:
+https://www.infoteca.cnptia.embrapa.br/infoteca/handle/doc/1180748?mode=full
 
-**DOI:** https://doi.org/10.1016/j.compag.2017.09.037
+Tipo:
+Institucional
 
-**Forma de acesso:** ScienceDirect
+Confiabilidade:
+MUITO ALTA
 
-### Objetivo da fonte
+Utilização:
+- Agricultura Digital
+- Inteligência Artificial
+- Transformação Digital no Agro
+- Fundamentação Teórica
 
-Apresentar técnicas de análise de grandes volumes de dados agrícolas.
+--------------------------------------------------------------------------------
+2. EMBRAPA – Agricultura Digital, Agrodados e Regulação
+--------------------------------------------------------------------------------
 
-### Contribuição para o projeto
+Link:
+https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1170049/1/LV-Agrodados-Regulacao-2024.pdf
 
-Fornece embasamento para armazenamento, processamento e análise de dados coletados pelos sensores.
+Tipo:
+Institucional
 
-### Aplicação no TCC
+Confiabilidade:
+MUITO ALTA
 
-Fundamentação da camada analítica e dos processos de tomada de decisão baseados em dados.
+Utilização:
+- Governança de Dados
+- Sensores
+- Automação
+- Infraestrutura Digital
 
----
+--------------------------------------------------------------------------------
+3. EMBRAPA – Visão Computacional Aplicada na Agricultura
+--------------------------------------------------------------------------------
 
-## 3. Internet of Things for Smart Agriculture
+Link:
+https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1126261/visao-computacional-aplicada-na-agricultura
 
-**Autores:** Diversos
+Tipo:
+Institucional
 
-**Ano:** Referência clássica da área
+Confiabilidade:
+MUITO ALTA
 
-**Forma de acesso:** IEEE Xplore
+Utilização:
+- Processamento de Imagens
+- Diagnóstico Agrícola
+- Visão Computacional
 
-### Objetivo da fonte
+--------------------------------------------------------------------------------
+4. BNDES / EMBRAPA – IoT e Agricultura
+--------------------------------------------------------------------------------
 
-Apresentar arquiteturas IoT aplicadas à agricultura.
+Link:
+https://www.bndes.gov.br/arquivos/iot/04-embrapa.pdf
 
-### Contribuição para o projeto
+Tipo:
+Institucional
 
-Fundamenta a comunicação entre sensores, dispositivos móveis e servidores.
+Confiabilidade:
+MUITO ALTA
 
-### Aplicação no TCC
+Utilização:
+- Sensores
+- IoT
+- Agricultura de Precisão
+- Telemetria
 
-Base da arquitetura distribuída do sistema.
+--------------------------------------------------------------------------------
+5. Smart Farming Review
+--------------------------------------------------------------------------------
 
----
+Link:
+https://www.sciencedirect.com/science/article/abs/pii/S0924424723004545
 
-## 4. Precision Agriculture and Food Security
+Tipo:
+Revisão Científica
 
-**Autores:** Gebbers, R.; Adamchuk, V.
+Confiabilidade:
+MUITO ALTA
 
-**Ano:** 2010
+Utilização:
+- Estado da Arte
+- Smart Farming
+- IA
+- IoT
 
-**DOI:** https://doi.org/10.1126/science.1183899
+--------------------------------------------------------------------------------
+6. Agricultural Robots Review
+--------------------------------------------------------------------------------
 
-**Forma de acesso:** Science
+Link:
+https://www.sciencedirect.com/science/article/abs/pii/S0168169923005343
 
-### Objetivo da fonte
+Tipo:
+Revisão Científica
 
-Relacionar agricultura de precisão com aumento da segurança alimentar.
+Confiabilidade:
+MUITO ALTA
 
-### Contribuição para o projeto
+Utilização:
+- Robótica Agrícola
+- Drones
+- Automação
 
-Justifica economicamente a adoção de tecnologias inteligentes no campo.
+--------------------------------------------------------------------------------
+7. SBC – Visão Computacional na Agricultura de Precisão
+--------------------------------------------------------------------------------
 
-### Aplicação no TCC
+Link:
+https://sol.sbc.org.br/index.php/eramiars/article/view/39457/39229
 
-Fundamentação econômica e social.
+Tipo:
+Artigo Científico
 
----
+Confiabilidade:
+ALTA
 
-## 5. Precision Agriculture – A Worldwide Overview
+Utilização:
+- CNNs
+- IA
+- Aplicações Brasileiras
 
-**Autores:** Zhang, N.; Wang, M.; Wang, N.
+--------------------------------------------------------------------------------
+8. FAPESP Pesquisa – Radar em Drone Facilita Monitoramento Agrícola
+--------------------------------------------------------------------------------
 
-**Ano:** 2002
+Link:
+https://revistapesquisa.fapesp.br/radar-em-drone-facilita-monitoramento-agricola/
 
-**DOI:** https://doi.org/10.1016/S0168-1699(02)00096-0
+Tipo:
+Divulgação Científica
 
-### Objetivo da fonte
+Confiabilidade:
+ALTA
 
-Apresentar visão geral da agricultura de precisão.
+Utilização:
+- Drones
+- Sensoriamento Remoto
 
-### Contribuição para o projeto
+--------------------------------------------------------------------------------
+9. Banco Central do Brasil
+--------------------------------------------------------------------------------
 
-Define conceitos fundamentais utilizados ao longo da pesquisa.
+Link:
+https://www.bcb.gov.br
 
-### Aplicação no TCC
+Tipo:
+Institucional
 
-Referência conceitual.
+Utilização:
+- SELIC
+- TMA
+- Engenharia Econômica
 
----
+--------------------------------------------------------------------------------
+10. Perfect Flight
+--------------------------------------------------------------------------------
 
-## 6. The Internet of Things: A Survey
+Link:
+https://www.perfectflight.com.br
 
-**Autores:** Atzori, L.; Iera, A.; Morabito, G.
+Tipo:
+Benchmark de Mercado
 
-**Ano:** 2010
+Utilização:
+- Comparação Competitiva
+- Funcionalidades Existentes
 
-**DOI:** https://doi.org/10.1016/j.comnet.2010.05.010
+--------------------------------------------------------------------------------
+11. SIMA
+--------------------------------------------------------------------------------
 
-### Objetivo da fonte
+Link:
+https://sima.ag/pt
 
-Apresentar conceitos fundamentais de IoT.
+Tipo:
+Benchmark de Mercado
 
-### Contribuição para o projeto
+Utilização:
+- Monitoramento Agrícola
+- Georreferenciamento
 
-Base para conectividade entre sensores, gateways e nuvem.
+--------------------------------------------------------------------------------
+12. Mordor Intelligence – Precision Farming Market
+--------------------------------------------------------------------------------
 
-### Aplicação no TCC
+Link:
+https://www.mordorintelligence.com/pt/industry-reports/global-precision-farming-market-industry
 
-Fundamentação da infraestrutura IoT.
+Tipo:
+Relatório de Mercado
 
----
+Confiabilidade:
+MÉDIA-ALTA
 
-## 7. Internet of Robotic Things: Concept, Technologies and Challenges
+Utilização:
+- Mercado
+- Crescimento Setorial
+- Viabilidade Econômica
 
-**Autor:** Ray, P. P.
+================================================================================
+4. ARTIGOS CIENTÍFICOS ANALISADOS
+================================================================================
 
-**Ano:** 2016
+--------------------------------------------------------------------------------
+13. Automatic Recognition of Rape Seeding Emergence Stage Based on Computer
+Vision Technology
+--------------------------------------------------------------------------------
 
-**DOI:** https://doi.org/10.1109/ACCESS.2016.2646734
+Autores:
+Fang Yihang; Chang Tingting; Zhai Ruifang; Wang Xingyu
 
-### Objetivo da fonte
+Tema:
+Reconhecimento automático de estágio de crescimento utilizando visão
+computacional.
 
-Apresentar a integração entre robótica e IoT.
+Contribuição:
+- Segmentação de imagens
+- Extração de características
+- Reconhecimento automatizado
 
-### Contribuição para o projeto
+Utilização:
+Módulo de visão computacional do projeto.
 
-Fundamenta a utilização de plataformas móveis inteligentes.
+--------------------------------------------------------------------------------
+14. Visão Computacional para Agricultura de Precisão:
+Detecção de Pragas com Deep Learning em Ambientes Naturais
+--------------------------------------------------------------------------------
 
-### Aplicação no TCC
+DOI:
+10.55905/rdelosv19.n77-133
 
-Referência para expansão futura do sistema.
+Resultado:
+94,2% de acurácia utilizando EfficientNet-B0.
 
----
+Contribuição:
+- Deep Learning
+- CNN
+- Detecção de Pragas
 
-## 8. Using Deep Learning for Image-Based Plant Disease Detection
+Utilização:
+Detecção automatizada de eventos agrícolas.
 
-**Autores:** Mohanty, Hughes e Salathé
+--------------------------------------------------------------------------------
+15. Integration of the Mobile Robot and Internet of Things to Collect Data
+from the Agricultural Fields
+--------------------------------------------------------------------------------
 
-**Ano:** 2016
+Autores:
+Halil Durmus
+Ece Olcay Güneş
 
-**DOI:** https://doi.org/10.3389/fpls.2016.01419
+Tema:
+Integração de Robótica Móvel, IoT e Computação em Nuvem.
 
-### Objetivo da fonte
+Principais Tecnologias:
+- Arduino
+- NVIDIA Jetson
+- WebSocket
+- Django
+- Cloud Computing
 
-Demonstrar a aplicação de Deep Learning na detecção de doenças vegetais.
+Contribuição:
+- Arquitetura distribuída
+- Coleta de dados
+- Monitoramento remoto
 
-### Contribuição para o projeto
+Utilização:
+Base para arquitetura do sistema.
 
-Validação científica do uso de CNNs.
+--------------------------------------------------------------------------------
+16. Desenvolvimento de Aplicação com Visão Computacional no Controle e
+Monitoramento Inteligente de Bovinos
+--------------------------------------------------------------------------------
 
-### Aplicação no TCC
+Autores:
+Arthur Maica e colaboradores
 
-Base para o módulo de classificação.
+Tecnologia:
+YOLOv4
 
----
+Resultado:
+mAP@50 de 72,5%
 
-## 9. Deep Learning Models for Plant Disease Detection and Diagnosis
+Contribuição:
+- Monitoramento Pecuário
+- Detecção em Tempo Real
 
-**Autor:** Ferentinos
+Utilização:
+Módulo de monitoramento animal.
 
-**Ano:** 2018
+--------------------------------------------------------------------------------
+17. Análise de Dados Massivos de Secadores de Grãos via IoT:
+Eficiência, Riscos e Oportunidades
+--------------------------------------------------------------------------------
 
-**DOI:** https://doi.org/10.1016/j.compag.2018.01.009
+Publicação:
+SODEBRAS
 
-### Objetivo da fonte
+Dados:
+- 352 equipamentos
+- 18 milhões de registros
 
-Comparação de arquiteturas profundas para classificação agrícola.
+Tecnologias:
+- MQTT
+- JSON
+- Mineração de Dados
 
-### Aplicação no TCC
+Contribuição:
+- Big Data
+- Analytics
+- Processamento Massivo
 
-Escolha e justificativa de modelos.
+Utilização:
+Camada analítica e processamento de dados.
 
----
+================================================================================
+5. ESTUDO DE CASO
+================================================================================
 
-## 10. Real-Time Semantic Segmentation of Crop and Weed
+WiMilk
 
-**Autores:** Milioto, Lottes e Stachniss
+Descrição:
+Startup brasileira focada em pecuária leiteira.
 
-**Ano:** 2017
+Tecnologias:
+- Inteligência Artificial
+- Visão Computacional
+- Computação em Nuvem
 
-**Forma de acesso:** IEEE Xplore
+Resultados divulgados:
+- Redução de até 60% no uso de antibióticos
+- Detecção precoce de mastite
+- Monitoramento contínuo
 
-### Objetivo da fonte
+Importância:
+Validação prática do modelo de negócio proposto.
 
-Segmentação em tempo real de culturas e ervas daninhas.
+================================================================================
+6. MAPA DE RASTREABILIDADE
+================================================================================
 
-### Aplicação no TCC
+IA e Agricultura
+→ Embrapa IA
+→ Smart Farming Review
 
-Referência para processamento de imagens.
+Visão Computacional
+→ Embrapa VC
+→ SBC
+→ Artigos 13, 14 e 16
 
----
+IoT e Sensores
+→ BNDES/Embrapa
+→ Artigos 15 e 17
 
-## 11. EfficientNet: Rethinking Model Scaling for CNNs
+Robótica
+→ Agricultural Robots Review
+→ Artigo 15
 
-**Autores:** Tan e Le
+Mercado
+→ Mordor
+→ Perfect Flight
+→ SIMA
 
-**Ano:** 2019
+Engenharia Econômica
+→ Banco Central
+→ Mordor Intelligence
 
-**Forma de acesso:** ICML Proceedings
-
-### Objetivo da fonte
-
-Apresentar a arquitetura EfficientNet.
-
-### Aplicação no TCC
-
-Fundamentação do modelo de classificação.
-
----
-
-## 12. YOLOv3: An Incremental Improvement
-
-**Autores:** Redmon e Farhadi
-
-**Ano:** 2018
-
-**Forma de acesso:** arXiv
-
-**Link:** https://arxiv.org/abs/1804.02767
-
-### Objetivo da fonte
-
-Detecção de objetos em tempo real.
-
-### Aplicação no TCC
-
-Referência para detecção de pragas, animais e objetos agrícolas.
-
----
-
-# ARTIGOS CIENTÍFICOS ANALISADOS (5 FONTES)
-
-## 13. Development of an Application with Computer Vision in the Control and Intelligent Monitoring of Cattle
-
-### Tipo
-
-Artigo científico
-
-### Tema
-
-Monitoramento inteligente de bovinos utilizando YOLOv4.
-
-### Contribuição
-
-Demonstra aplicação prática de visão computacional em ambiente agropecuário.
-
-### Aplicação no projeto
-
-Validação do uso de IA para monitoramento automatizado.
-
----
-
-## 14. Análise de Dados Massivos de Secadores de Grãos via IoT: Eficiência, Riscos e Oportunidades
-
-### Tipo
-
-Artigo científico nacional
-
-### Evento/Periódico
-
-SODEBRAS 2025
-
-### Tema
-
-Big Data e IoT aplicados ao agronegócio.
-
-### Contribuição
-
-Mostra desafios reais de coleta, armazenamento e análise de dados.
-
-### Aplicação no projeto
-
-Base para arquitetura de dados e dashboards.
-
----
-
-## 15. Automatic Recognition of Rape Seeding Emergence Stage Based on Computer Vision Technology
-
-### Tipo
-
-Artigo IEEE
-
-### Forma de acesso
-
-IEEE Xplore
-
-### Tema
-
-Reconhecimento automático de estágio de crescimento utilizando visão computacional.
-
-### Contribuição
-
-Apresenta pipeline completo de segmentação, extração de características e classificação.
-
-### Aplicação no projeto
-
-Referência para processamento de imagens agrícolas.
-
----
-
-## 16. Visão Computacional para Agricultura de Precisão: Detecção de Pragas com Deep Learning em Ambientes Naturais
-
-### Tipo
-
-Artigo científico
-
-### Revista
-
-Revista DELOS (2026)
-
-### Tema
-
-Detecção de pragas utilizando EfficientNet-B0.
-
-### Resultados
-
-Acurácia de 94,2%.
-
-### Aplicação no projeto
-
-Validação nacional do uso de CNNs em campo.
-
----
-
-## 17. Integration of the Mobile Robot and Internet of Things to Collect Data from the Agricultural Fields
-
-### Tipo
-
-Artigo IEEE
-
-### Forma de acesso
-
-IEEE Xplore
-
-### Tema
-
-Integração de robótica móvel, IoT, sensores ambientais, GPS, WebSocket e computação em nuvem.
-
-### Principais tecnologias utilizadas
-
-* Arduino
-* NVIDIA Jetson
-* GPS
-* Sensores ambientais
-* WebSocket
-* Django
-* Cloud Computing
-
-### Contribuição
-
-Apresenta uma arquitetura extremamente próxima da arquitetura proposta para o projeto.
-
-### Aplicação no projeto
-
-Referência principal para integração entre hardware embarcado, comunicação distribuída e monitoramento remoto.
-
----
-
-# ESTUDO DE CASO COMPLEMENTAR
-
-## WiMilk
-
-### Tipo
-
-Caso real de mercado
-
-### Área
-
-Pecuária de precisão
-
-### Tecnologias empregadas
-
-* Sensores IoT
-* Computação em nuvem
-* Inteligência Artificial
-* Monitoramento em tempo real
-
-### Contribuição
-
-Demonstra viabilidade comercial da aplicação de tecnologias inteligentes no agronegócio.
-
-### Aplicação no projeto
-
-Benchmark tecnológico e validação de mercado.
-
----
-
-# RESUMO FINAL
-
-Quantidade de referências bibliográficas principais: 17
-
-* 12 referências teóricas fundamentais
-* 5 artigos científicos analisados
-
-Fonte complementar:
-
-* 1 estudo de caso empresarial (WiMilk)
-
-Total de fontes consideradas no trabalho: 18
-
-Este conjunto fornece embasamento suficiente para:
-
-* Fundamentação Teórica;
-* Revisão Bibliográfica;
-* Metodologia;
-* Arquitetura do Sistema;
-* Justificativa Técnica;
-* Justificativa Econômica;
-* Estudo de Viabilidade;
-* Trabalhos Relacionados;
-* Discussão dos Resultados.
+================================================================================
+FIM DO DOCUMENTO
+================================================================================
