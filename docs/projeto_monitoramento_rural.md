@@ -1,6 +1,6 @@
 # 🌾 Plataforma Inteligente Integrada de Monitoramento Rural
 
-### IA · Drones · IoT · Visão Computacional — *Documento de Concepção (Engenharia Econômica)*
+## IA · Drones · IoT · Visão Computacional — *Documento de Concepção (Engenharia Econômica)*
 
 **Autores da Proposta:** [preencher — equipe]
 **Data:** [preencher] / 2026
@@ -49,7 +49,7 @@ já está provado —, e sim **entregar uma solução integrada, confiável e co
 
 ## 1. O Problema (A Dor)
 
-**Quem sofre com isso**
+Quem sofre com isso
 
 - **Produtores rurais (médias e grandes fazendas de grãos)** que perdem produtividade por detecção
   tardia de pragas, doenças, falhas de plantio, estresse hídrico e aplicação ineficiente de insumos.
@@ -58,7 +58,7 @@ já está provado —, e sim **entregar uma solução integrada, confiável e co
 - **Cooperativas e tradings** que precisam de rastreabilidade e dados consistentes para crédito,
   seguro agrícola e acesso a mercados que exigem comprovação de boas práticas.
 
-**Como resolvem hoje**
+Como resolvem hoje
 
 - Inspeção manual amostral + experiência do agrônomo.
 - Ferramentas **fragmentadas**: um app para imagens de satélite, outra empresa para voo de drone,
@@ -66,11 +66,11 @@ já está provado —, e sim **entregar uma solução integrada, confiável e co
 - Imagens de satélite gratuitas têm **baixa resolução e alta latência** (nuvens, dias de defasagem),
   insuficientes para decisão em janela curta.
 
-**Por que as soluções atuais falham**
+Por que as soluções atuais falham
 
 - **Fragmentação:** o dado existe, mas espalhado; ninguém junta drone + IoT + satélite + histórico
   em uma única recomendação acionável.
-- **Conectividade intermitente no campo:** muitas soluções assumem internet estável e quebram em
+- **Conectividade intermitente no field:** muitas soluções assumem internet estável e quebram em
   zonas sem sinal (o produtor precisa de operação **offline-first**).
 - **Falta de tradução em decisão:** entregam "mapas bonitos", não **prescrições** (onde, quanto e
   quando aplicar) prontas para o maquinário.
@@ -85,14 +85,15 @@ já está provado —, e sim **entregar uma solução integrada, confiável e co
 
 ## 2. A Nossa Solução (A Proposta)
 
-**Pitch de elevador**
+Pitch de elevador
+
 > Uma plataforma única que conecta **drones, sensores IoT e visão computacional com IA** para
 > transformar imagens e leituras do campo em **decisões acionáveis** — alertas de praga, mapas de
 > prescrição de insumos e indicadores de produtividade — entregues ao produtor mesmo em áreas com
-> conectividade ruim. Para médias e grandes fazendas que querem **reduzir perdas e custo de insumos
+> conectividade ruim. Para médias e grandes fazendas que querem **reduzir perdas e custo de insumos**
 > com retorno mensurável**, e não apenas "mais um painel".
 
-**O Produto (camadas de valor)**
+O Produto (camadas de valor)
 
 1. **Captura integrada:** voos de drone (RGB + multiespectral) + rede de sensores IoT de solo/clima
    - imagens de satélite, tudo no mesmo mapa georreferenciado da propriedade.
@@ -104,7 +105,7 @@ já está provado —, e sim **entregar uma solução integrada, confiável e co
 4. **Operação offline-first:** o *gateway* na fazenda coleta e processa localmente; sincroniza com a
    nuvem quando há rede. O produtor não fica "cego" sem sinal.
 
-**O Grande Diferencial (o que nos torna difíceis de copiar)**
+O Grande Diferencial (o que nos torna difíceis de copiar)
 
 - **Integração ponta-a-ponta** (drone + IoT + satélite + ERP) em uma camada só — versus concorrentes
   que cobrem apenas um pedaço.
@@ -121,7 +122,8 @@ já está provado —, e sim **entregar uma solução integrada, confiável e co
 A arquitetura é pensada em **camadas**, separando captação, borda, processamento, dados e aplicação.
 Essa separação permite começar simples no MVP e escalar sem reescrever o núcleo.
 
-```
+```plaintext
+
 [ CAMPO / EDGE ]                    [ NÚVEM ]                       [ USUÁRIO ]
  Drone (RGB + multiespectral) ┐
  Sensores IoT (solo, clima)   ├─► Gateway de borda  ──(sync)──►  Pipeline de    ──►  Dashboard web/mobile
@@ -142,10 +144,10 @@ Essa separação permite começar simples no MVP e escalar sem reescrever o núc
                                                           - ERPs agrícolas e plataformas de maquinário
 ```
 
-**Decisões de arquitetura e justificativa**
+Decisões de arquitetura e justificativa
 
 | Camada | Função | Racional de engenharia |
-|---|---|---|
+| --- | --- | --- |
 | **Captação (Edge)** | Drone + IoT + satélite | Redundância de fonte: drone para alta resolução pontual, IoT para contínuo, satélite para cobertura ampla/baixo custo |
 | **Borda (Gateway)** | Buffer offline, pré-processamento, inferência leve | Resolve conectividade intermitente; reduz volume enviado à nuvem (custo) |
 | **Processamento (Núvem)** | Ortomosaico, treino de modelos, CV pesado | Escala elástica; concentra GPU onde compensa |
@@ -157,7 +159,6 @@ Essa separação permite começar simples no MVP e escalar sem reescrever o núc
 > tratores conectados) são **reais e relevantes**, mas o **mecanismo exato de integração** (formatos,
 > APIs, certificações) deve ser confirmado na documentação atual de cada fabricante antes de prometer
 > compatibilidade. Não assuma uma API específica sem checar a doc vigente.
-
 **Faseamento técnico (MVP → produto)**
 
 - **MVP (até julho):** 1 fonte de dado bem-feita (ex.: drone RGB) + 1 caso de IA (NDVI ou detecção
@@ -180,7 +181,7 @@ Há três arquiteturas possíveis de monetização. Recomendamos a **(A)** como 
 melhor margem e *payback* mais rápido, com **(B)** como upsell:
 
 | Modelo | Como cobra | CAPEX (nosso) | Margem | Velocidade de payback |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **(A) SaaS por hectare** *(recomendado)* | Assinatura anual **R$/ha/ano** (drone/IoT do cliente ou parceiro) | Baixo | Alta | Rápida |
 | **(B) Monitoramento como serviço (DaaS)** | Pacote completo, incluindo voos (frota nossa) | Alto (frota) | Média | Mais lenta |
 | **(C) Híbrido** | *Setup fee* único + SaaS recorrente | Médio | Alta | Média |
@@ -198,7 +199,7 @@ Conforme o material, a TMA é o **custo de oportunidade**: a melhor aplicação 
 disponível. Hoje a referência é a **Selic = 14,50% a.a. (Copom, jun/2026)**.
 
 | Cenário de TMA | Valor | Justificativa |
-|---|---|---|
+| --- | --- | --- |
 | **Piso (custo de oportunidade puro)** | **14,5% a.a.** | Selic — "deixar o dinheiro no banco sem dor de cabeça" |
 | **Recomendada (projeto/venture)** | **20% a.a.** | Selic + ~5,5 p.p. de prêmio de risco para um negócio early-stage |
 | **Estresse (conservadora)** | **30% a.a.** | Investidor exige retorno alto pelo risco de adoção |
@@ -225,14 +226,14 @@ foram **conferidos matematicamente** (script reproduzível). Não são dados de 
 **Fluxo de caixa líquido resultante (R$):**
 
 | Ano | 0 | 1 | 2 | 3 | 4 | 5 |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | **Receita** | — | 625.000 | 1.750.000 | 4.000.000 | 8.000.000 | 13.750.000 |
 | **Fluxo líquido** | −380.000 | −462.500 | +25.000 | +900.000 | +2.400.000 | +4.625.000 |
 
 #### 3.2.4 Indicadores — Cenário Base
 
 | Indicador | TMA 14,5% | TMA 20% | TMA 30% | Leitura |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **VPL** | R$ 3.581.113 | R$ 2.788.869 | R$ 1.774.627 | **> 0 → viável** em todas |
 | **TIR** | 79,9% a.a. | 79,9% | 79,9% | **≫ TMA** (TIR não muda com a TMA) |
 | **Payback simples** | 2,91 anos | 2,91 | 2,91 | recupera o capital em ~2 anos e 11 meses |
@@ -264,7 +265,7 @@ O material enfatiza que o **motor comercial (vendas/adoção)** é o parâmetro 
 preço e custo:
 
 | Cenário | Premissa | VPL (TMA 20%) | TIR | Payback desc. | Veredito |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | **Otimista** | adoção +25%, preço +10% | R$ 6.003.722 | 127,7% | 2,35 anos | Muito viável |
 | **Base** | premissas centrais | R$ 2.788.869 | 79,9% | 3,20 anos | Viável |
 | **Pessimista** | adoção −40%, preço −15% | **−R$ 572.163** | −2,2% | **não recupera** | **Inviável no horizonte** |
@@ -292,14 +293,13 @@ preço e custo:
 
 Esta seção é onde o trabalho ganha nota: **trocar as premissas 🟡 por dados verificáveis.** Roteiro:
 
-**4.1 Validar o tamanho de mercado (com fonte e data)**
+4.1 Validar o tamanho de mercado (com fonte e data)
 
 - Confirmar números atuais de: área agrícola com conectividade, ritmo de expansão de área plantada,
   tamanho do mercado de agricultura de precisão/agtech no Brasil.
 - ⚠️ Há projeções antigas circulando (ex.: "mercado deve crescer R$ 40 bi até 2026", de 2022).
   **Use uma fonte atual e cite-a** — não repita projeção velha como se fosse fato de hoje.
-
-**4.2 Mapear concorrentes reais (já existem — isto valida a demanda)**
+ **4.2 Mapear concorrentes reais (já existem — isto valida a demanda)**
 
 - **Perfect Flight** (SP) — gestão/rastreabilidade de pulverização aérea; reporta dezenas de milhões
   de hectares digitalizados.
@@ -307,7 +307,6 @@ Esta seção é onde o trabalho ganha nota: **trocar as premissas 🟡 por dados
   offline; reporta milhões de hectares monitorados.
 - **SSCrop** e outras plataformas de gestão rural.
 - Levantar **preço, escopo e o que cada um NÃO faz** → é aí que se posiciona o diferencial de integração.
-
 **4.3 Construir o caso de uma fazenda real (ou representativa)**
 
 - Escolher um perfil de fazenda do Centro-Oeste (grãos) — **vocês estão em Goiânia, no coração do
@@ -315,7 +314,6 @@ Esta seção é onde o trabalho ganha nota: **trocar as premissas 🟡 por dados
 - Levantar: área (ha), cultura, **perda média por safra** por detecção tardia, **gasto com insumos**,
   horas de inspeção. Traduzir em **R$ economizados/ano** com a plataforma → essa é a **proposta de
   valor quantificada** e o que justifica o preço/ha.
-
 **4.4 Cotações reais para o CAPEX/OPEX (substituir as premissas da Seção 3.2.3)**
 
 - Cotar: 1 drone (RGB e/ou multiespectral), kit de sensores IoT, custo de nuvem/processamento,
@@ -350,7 +348,7 @@ Esta seção é onde o trabalho ganha nota: **trocar as premissas 🟡 por dados
 Mapa das perguntas que uma banca/juiz faz, e onde/como respondê-las.
 
 | # | Pergunta | Como responder | Onde está |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 1 | Qual o problema e quem sofre? | Dado de perda/custo por safra de um perfil real de fazenda | §1, §4.3 |
 | 2 | Por que agora? | Conectividade rural + custo de drone/IoT caindo + IA madura | §0 |
 | 3 | Já não existe isso? | Sim, mas fragmentado — mostrar o que concorrentes NÃO fazem | §2, §4.2 |
@@ -367,7 +365,7 @@ Mapa das perguntas que uma banca/juiz faz, e onde/como respondê-las.
 ## 7. Anexo B — Mapa dos entregáveis
 
 | Entregável | Duração/limite | O que priorizar | Fonte no doc |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Apresentação** | 3 min | Problema (1 número de dor) → solução → **payback** → 1 slide de sensibilidade | §1, §2, §3.2.5–6 |
 | **Relatório** | 6 páginas | 0–5 condensados; tabela de indicadores + gráfico de fluxo acumulado | doc inteiro |
 | **Vídeo (YouTube)** | 3 min | Narrativa: dor real → demo/mockup → "se paga em ~3 anos" | §1, §2, §3.2.5 |
@@ -386,7 +384,7 @@ Mapa das perguntas que uma banca/juiz faz, e onde/como respondê-las.
 ## 8. Anexo C — Premissas e pendências de verificação
 
 | Item | Valor usado | Status | Ação |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Selic (base da TMA) | 14,50% a.a. | ✅ Real (Copom, jun/2026) | Reconferir na data da entrega |
 | Preço por hectare | R$ 25/ha/ano | 🟡 Premissa | Benchmark com concorrentes (§4.2) |
 | Curva de adoção (ha) | 25k→550k em 5 anos | 🟡 Premissa | Calibrar com canal de vendas realista |
