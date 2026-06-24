@@ -285,7 +285,7 @@ Utilização:
 --------------------------------------------------------------------------------
 13. Automatic Recognition of Rape Seeding Emergence Stage Based on Computer
 Vision Technology
---------------------------------------------------------------------------------
+----------------------------------7----------------------------------------------
 
 Autores:
 Fang Yihang; Chang Tingting; Zhai Ruifang; Wang Xingyu

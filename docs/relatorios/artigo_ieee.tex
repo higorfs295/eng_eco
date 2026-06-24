@@ -1,0 +1,341 @@
+% =====================================================================
+%  ARTIGO IEEE — Plataforma Inteligente Integrada de Monitoramento Rural
+%  Disciplina: Engenharia Econômica — UFG/EMC — 2026
+%  Compila no Overleaf (IEEEtran está disponível por padrão).
+%  Classe IEEEtran: padrão de conferência IEEE, duas colunas.
+%
+%  >>> PENDÊNCIAS MARCADAS COM  % TODO:  (ver mensagem de acompanhamento) <<<
+% =====================================================================
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,fit,backgrounds}
+\usepackage[hidelinks]{hyperref}
+
+\newcommand{\rs}{R\$}
+
+\begin{document}
+
+\title{Plataforma Inteligente de Monitoramento Rural com IA e Visão Computacional: Viabilidade Econômica de Três Modelos de Receita B2B\\
+\thanks{Trabalho da disciplina de Engenharia Econômica. Os valores financeiros são premissas de trabalho conferidas matematicamente, não dados de mercado verificados (ver Seção~\ref{sec:case}).}}
+
+\author{
+\IEEEauthorblockN{Higor Ferreira Silva\quad Igor Barbosa Lino\quad Wallyson Miranda Aguiar}
+\IEEEauthorblockA{\textit{Escola de Engenharia Elétrica, Mecânica e de Computação (EMC)}\\
+\textit{Universidade Federal de Goiás (UFG)}\\
+Goiânia, GO, Brasil}
+}
+
+\maketitle
+
+\begin{abstract}
+Este artigo avalia a viabilidade econômica de uma plataforma B2B de monitoramento rural que integra drones, sensores IoT e visão computacional com inteligência artificial, voltada a médias e grandes fazendas de grãos do Centro-Oeste brasileiro. O problema central de Engenharia Econômica é determinar se, e em quanto tempo, o investimento se paga. Comparam-se três arquiteturas de receita --- SaaS \textit{asset-light} (A), \textit{Drone-as-a-Service} com frota própria (B) e Híbrido com taxa de implantação mais assinatura (C) --- por meio de Valor Presente Líquido (VPL), Taxa Interna de Retorno (TIR), \textit{payback} simples e descontado, Índice Benefício/Custo (IBC) e Retorno sobre Investimento Adicionado (ROIA). A Taxa Mínima de Atratividade (TMA) é ancorada na Selic vigente (14,25\% a.a., Copom de 17/06/2026) e estressada a 20\% e 30\% a.a. O modelo Híbrido apresenta o melhor desempenho (VPL de \rs~2{,}94~mi a 20\% de TMA; TIR de 85,6\%; \textit{payback} descontado de $\approx$3 anos). A análise de sensibilidade mostra que a viabilidade depende criticamente da velocidade de adoção de hectares: sob queda de 40\% na adoção, o resultado migra de positivo para negativo, conforme a hipótese de elasticidade de custos. Conclui-se que a tese de investimento é, no fundo, uma tese sobre execução comercial.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Engenharia Econômica, VPL, TIR, \textit{payback}, AgTech, agricultura de precisão, viabilidade econômica, SaaS.
+\end{IEEEkeywords}
+
+% =====================================================================
+\section{Introdução e Contextualização}
+% =====================================================================
+O agronegócio brasileiro opera sob margens apertadas, exigência crescente de rastreabilidade e janelas de decisão curtas: pragas, doenças e estresse hídrico podem comprometer a safra em poucos dias se não forem detectados a tempo. Simultaneamente, três habilitadores tecnológicos amadureceram: a expansão da conectividade rural, a queda no custo de drones e sensores, e o avanço da IA e da visão computacional a níveis de precisão operacional~\cite{embrapa_ia,smartfarming,bndes_iot}. O resultado é uma transição em curso para ``fazendas inteligentes'', em que o dado coletado em campo passa a orientar cada operação de manejo. Esse movimento já se reflete no mercado: o segmento global de drones agrícolas foi estimado em cerca de US\$~2,41~bilhões em 2025, com forte crescimento projetado~\cite{mordor_drones}.
+
+Diferentemente de mercados em que a tecnologia ainda precisa ser provada, aqui a demanda já está validada por concorrentes ativos com escala relevante (Seção~\ref{sec:case}). O risco, portanto, não é de mercado, mas de execução comercial. O papel da análise de Engenharia Econômica é duplo: provar que o investimento se paga --- e em quanto tempo --- tanto para o produtor quanto para o negócio que oferece a plataforma.
+
+Este trabalho concentra-se na perspectiva do negócio (a operação da plataforma) e responde à pergunta central da disciplina --- ``a partir de quando o projeto dá lucro?'' --- com os indicadores clássicos de fluxo de caixa descontado, acompanhados de análise de sensibilidade. Todos os valores monetários são premissas de trabalho, conferidas matematicamente por implementações independentes, e devem ser recalibrados com os dados reais discutidos na Seção~\ref{sec:case}.
+
+% =====================================================================
+\section{Fundamentação Teórica e o Problema do Cliente}
+\label{sec:rel}
+% =====================================================================
+\subsection{Fundamentação teórica}
+A agricultura digital, sistematizada por publicações institucionais brasileiras, utiliza dados para otimizar operações, prever problemas e melhorar a eficiência produtiva~\cite{embrapa_ia,bndes_iot}. Ela se apoia em três pilares que amadureceram em conjunto: a instrumentação do campo por sensores e dispositivos de IoT, a captação de imagens por drones e satélites, e a análise desses dados por modelos de aprendizado de máquina. No núcleo técnico, redes neurais convolucionais e arquiteturas como YOLO e EfficientNet têm sido aplicadas à identificação de pragas, à classificação de culturas e ao reconhecimento de padrões em imagens de campo, com acurácias operacionalmente úteis relatadas na literatura --- por exemplo, 94,2\% de acurácia com EfficientNet-B0 na detecção de pragas em ambiente natural~\cite{embrapa_vc,sbc_vc,artigo_efficientnet}. A integração entre robótica móvel, IoT e computação em nuvem para aquisição de dados agrícolas foi demonstrada em arquiteturas compostas por sensores, comunicação sem fio e servidores~\cite{durmus_iot}, enquanto a análise massiva de dados operacionais via IoT --- exemplificada pelo processamento de mais de 18 milhões de registros oriundos de 352 secadores de grãos conectados --- evidencia o potencial de diagnóstico e automação a partir de dados de campo~\cite{sodebras}.
+
+No plano da validação comercial, o caso da WiMilk, AgTech brasileira que une IA, visão computacional e monitoramento contínuo na pecuária leiteira, é frequentemente citado como evidência de adoção e geração de valor real~\cite{wimilk}. Cabe a ressalva de que se trata de domínio distinto (pecuária leiteira, e não grãos): o caso sustenta a tese tecnológica --- soluções baseadas em dados geram valor mensurável ---, mas não constitui comparável direto de mercado para a plataforma de grãos aqui proposta, papel reservado aos concorrentes da Seção~\ref{sec:case}.
+
+A literatura também adverte que o retorno da agricultura de precisão é \textbf{dependente de contexto}, e não automático. Em estudo experimental conduzido em áreas de pastagem (Tifton~85) no Oeste de Santa Catarina, Silva e Maccari (2014) compararam o manejo por taxa variável com o manejo convencional e observaram que a técnica de precisão resultou em custo cerca de 32\% superior (\rs~1.295,70/ha contra \rs~979,20/ha), sem diferença estatisticamente significativa de produtividade entre os dois sistemas; os autores concluíram que, naquele contexto, a precisão não proporcionou ganho economicamente viável~\cite{silva_maccari}. Esse resultado --- de domínio (pastagem) e escala distintos do aqui analisado --- reforça a postura metodológica deste trabalho: o ganho por hectare é uma \textbf{premissa a ser medida em piloto}, não um número a ser assumido. Fontes institucionais e setoriais reforçam tanto o potencial da agricultura de precisão e da conectividade no campo~\cite{embrapa_ap_cana,fapesp_drone,fundaj_drones} quanto a necessidade de quantificar caso a caso a economia por hectare~\cite{canalrural_178}.
+
+\subsection{O problema: a dor do cliente}
+É contra esse pano de fundo que se define o problema concreto. Médias e grandes fazendas de grãos perdem produtividade por \textbf{detecção tardia} de pragas, doenças, falhas de plantio e estresse hídrico, e gastam mais que o necessário com insumos por aplicação uniforme. Hoje o problema é endereçado por inspeção manual amostral, lenta e sujeita a erro em áreas de milhares de hectares, somada a \textbf{ferramentas fragmentadas}: um aplicativo de satélite, outro fornecedor para o voo de drone, uma planilha para sensores e o ERP da fazenda à parte, sem integração. O dado existe, mas está disperso e raramente se converte em uma decisão acionável no tempo certo.
+
+As soluções atuais falham por quatro motivos: (i) fragmentação dos dados, que existem mas estão dispersos; (ii) pressuposto de conectividade estável, que quebra no campo; (iii) entrega de ``mapas'', e não de \textbf{prescrições acionáveis}; e (iv) retorno não demonstrado em reais, o que trava a adoção. A consequência prática é uma perda financeira recorrente que o produtor sequer mede com precisão --- e é justamente essa perda que dimensiona o valor a ser capturado pela solução. A própria evidência contraditória da pastagem reforça que esse valor não pode ser presumido: precisa ser demonstrado, em reais, para cada perfil de fazenda.
+
+% =====================================================================
+\section{Proposta de Solução}
+% =====================================================================
+Propõe-se uma plataforma única que conecta \textbf{drones, sensores IoT e visão computacional com IA} e transforma imagens e leituras de campo em \textbf{decisões acionáveis}: alertas priorizados de praga e doença, mapas de prescrição de taxa variável (VRT) exportáveis para o maquinário e indicadores de produtividade por talhão, funcionando mesmo com conectividade ruim (operação \textit{offline-first}).
+
+Os diferenciais defensáveis são: integração ponta a ponta (drone, IoT, satélite e ERP) em uma camada única; tradução do dado em prescrição e em reais, e não apenas em visualização; resiliência de conectividade por projeto; e uma base de dados proprietária que melhora os modelos a cada safra (efeito de rede de dados).
+
+O produto organiza-se em quatro camadas de valor. A primeira é a \textbf{captura integrada}: voos de drone (RGB e multiespectral), rede de sensores IoT de solo e clima e imagens de satélite, reunidos no mesmo mapa georreferenciado da propriedade. A segunda é o \textbf{cérebro de IA e visão computacional}: detecção de anomalias (pragas, doenças, falhas de plantio), índices de vegetação, estimativa de estresse hídrico e previsão simples de produtividade por talhão. A terceira é a \textbf{camada de decisão}: geração de mapas de prescrição de taxa variável exportáveis para o maquinário e alertas priorizados, do tipo ``talhão 7: foco de praga, agir em 48~h''. A quarta é a \textbf{operação \textit{offline-first}}: o \textit{gateway} na fazenda coleta e processa localmente e sincroniza com a nuvem quando há rede, de modo que o produtor não fique sem informação na ausência de sinal.
+
+% =====================================================================
+\section{Metodologia da Solução}
+% =====================================================================
+
+\subsection{Dimensão Técnica: arquitetura}
+A arquitetura é organizada em camadas, o que permite um Produto Mínimo Viável (MVP) enxuto e a escala sem reescrita do núcleo. A decisão central é a separação entre borda (campo) e nuvem: tarefas leves e o \textit{buffer} \textit{offline} ficam em um \textit{gateway} na fazenda, enquanto o processamento pesado (ortomosaico, treino de modelos) fica na nuvem, com custo elástico. A Tabela~\ref{tab:arq} resume as camadas e seus racionais de engenharia. O fluxo de inferência apoia-se em arquiteturas de visão computacional consolidadas na literatura agrícola~\cite{embrapa_vc,sbc_vc,artigo_efficientnet} e em integração robótica/IoT documentada em campo~\cite{durmus_iot,sodebras}.
+
+\begin{table}[!t]
+\caption{Camadas da arquitetura e racional de engenharia}
+\label{tab:arq}
+\centering
+\footnotesize
+\begin{tabular}{@{}p{1.5cm}p{2.3cm}p{3.0cm}@{}}
+\toprule
+\textbf{Camada} & \textbf{Função} & \textbf{Racional} \\
+\midrule
+Captação (Edge) & Drone (RGB/multiespectral) + IoT + satélite & Redundância de fonte de dado \\
+Borda (Gateway) & \textit{Buffer} \textit{offline}, pré-proc., inferência leve & Resolve conectividade; reduz custo de nuvem \\
+Processamento (Nuvem) & Ortomosaico, treino, VC pesada & Escala elástica de GPU \\
+Dados & Geoespacial + séries temporais + imagens & Cada dado no banco adequado \\
+Aplicação & \textit{Dashboard}, alertas, prescrição & Onde o dado vira decisão \\
+Integração & Exportar prescrição (ISO-XML) e ERP & O ``último metro'' do valor \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+O faseamento previsto é: MVP (uma fonte de dado, um caso de IA, \textit{dashboard} e uma fazenda-piloto) $\rightarrow$ V1 (IoT, satélite e mapa de prescrição) $\rightarrow$ V2 (modelos preditivos, integração com maquinário e base multifazenda).
+
+\subsubsection*{Pipeline de dados e modelos de IA}
+A camada inteligente é alimentada por um pipeline com etapas de limpeza, normalização, padronização, enriquecimento e validação dos dados, armazenados em estrutura apropriada para análises históricas. As fontes podem combinar bases públicas (por exemplo, PlantVillage e conjuntos da Embrapa) com bases próprias (drones, \textit{smartphones} e sensores locais). Para o treino dos modelos de visão computacional, adota-se a partição usual de 70\% para treino, 15\% para validação e 15\% para teste, avaliada por métricas de classificação e detecção --- acurácia, precisão, \textit{recall}, \textit{F1-score} e \textit{mAP} ---, além da matriz de confusão. Essa disciplina metodológica é o que permite, na dimensão financeira, tratar a melhoria contínua dos modelos como um ativo (efeito de rede de dados) e não como custo recorrente sem retorno.
+
+\begin{figure}[!t]
+\centering
+\footnotesize
+\begin{tikzpicture}[
+  node distance=4mm,
+  box/.style={draw, rounded corners=2pt, align=center, inner sep=3pt,
+              text width=6.6cm, minimum height=7mm, fill=gray!6},
+  arr/.style={-{Latex[length=2mm]}, thick, gray!60}]
+\node[box, fill=green!8] (edge) {\textbf{Campo / Edge}\\ Drone (RGB + multiespectral) $\cdot$ IoT $\cdot$ satélite};
+\node[box, below=of edge, fill=green!12] (gw) {\textbf{Borda / Gateway}\\ \textit{buffer offline} $\cdot$ pré-processamento $\cdot$ inferência leve};
+\node[box, below=of gw, fill=blue!8] (cloud) {\textbf{Nuvem}\\ ortomosaico $\cdot$ treino de modelos $\cdot$ visão computacional pesada};
+\node[box, below=of cloud, fill=gray!10] (data) {\textbf{Dados}\\ geoespacial $\cdot$ séries temporais $\cdot$ \textit{data lake} de imagens};
+\node[box, below=of data, fill=green!8] (app) {\textbf{Aplicação / Integração}\\ \textit{dashboard} $\cdot$ alertas $\cdot$ mapas de prescrição (VRT) $\cdot$ ERP/ISO-XML};
+\draw[arr] (edge) -- (gw);
+\draw[arr] (gw) -- node[right, font=\scriptsize, text=gray]{\textit{sync}} (cloud);
+\draw[arr] (cloud) -- (data);
+\draw[arr] (data) -- (app);
+\end{tikzpicture}
+\caption{Arquitetura em camadas, da captação no campo à decisão. A separação borda--nuvem resolve a conectividade intermitente e controla o custo de processamento.}
+\label{fig:arq}
+\end{figure}
+
+\subsection{Dimensão Financeira: viabilidade}
+
+\subsubsection{Indicadores e regras de decisão}
+Adotam-se os indicadores clássicos de Engenharia Econômica. A TMA é o custo de oportunidade que serve de taxa de desconto. O VPL mede a riqueza criada no presente (viável se $\text{VPL}>0$). A TIR é a taxa que zera o VPL (atrativo se $\text{TIR}>\text{TMA}$). O \textit{payback} simples e o descontado medem o tempo de recuperação do capital, sem e com o custo do dinheiro. O IBC é a razão entre o valor presente dos benefícios e o investimento (cria valor se $\text{IBC}>1$), e o ROIA, dado por $\text{ROIA}=\text{IBC}^{1/n}-1$, expressa o ganho percentual real acima da TMA.
+
+Formalmente, com fluxos $FC_t$ e horizonte $n=5$:
+\begin{equation}
+\text{VPL}=\sum_{t=0}^{n}\frac{FC_t}{(1+i)^t},\qquad \text{TIR}: \sum_{t=0}^{n}\frac{FC_t}{(1+\text{TIR})^t}=0.
+\end{equation}
+
+\subsubsection{Taxa Mínima de Atratividade (TMA)}
+A referência de custo de oportunidade é a Selic vigente, \textbf{14,25\% a.a.}, definida pelo Copom em 17/06/2026 (ata divulgada em 23/06/2026)~\cite{bcb,copom_jun2026}. Utilizam-se três níveis: \textbf{piso de 14,25\%} (custo de oportunidade puro), \textbf{recomendado de 20\%} (Selic mais prêmio de risco de \textit{venture}) e \textbf{estresse de 30\%}. A taxa deve ser reconferida na data de defesa, pois o ciclo monetário segue em alternância entre pausa e cortes pontuais~\cite{copom_jun2026}.
+
+\subsubsection{Premissas centrais (ilustrativas)}
+As premissas, conferidas matematicamente mas \emph{não} verificadas no mercado, são: investimento inicial de \rs~380.000 no Ano~0; horizonte de 5 anos; curva de adoção de 25~mil a 550~mil hectares ativos; fazenda média de 3.000~ha por cliente; e, no modelo recomendado, preço de \rs~22/ha/ano somado a uma taxa de implantação. A Tabela~\ref{tab:fc} apresenta o fluxo de caixa do modelo Híbrido.
+
+\subsubsection{Referências de mercado para CAPEX e OPEX}
+Para ancorar a ordem de grandeza das premissas, levantaram-se faixas reais de preço de fornecedores e fontes setoriais brasileiros (2024--2026), resumidas na Tabela~\ref{tab:capexopex}. Trata-se de \emph{referências de calibração}, não de cotações fechadas: os valores oscilam com fornecedor, configuração, região e escala, e devem ser confirmados por orçamento na data da compra. No lado do CAPEX, um drone de mapeamento multiespectral (classe DJI Mavic~3 Multispectral, com RTK) situa-se entre \rs~36~mil e \rs~41,5~mil no varejo nacional~\cite{drone_mavic3m}. Estações agrometeorológicas e redes de sensores de solo são, em geral, vendidas sob orçamento; uma referência útil é o custo \emph{por hectare} da camada de IoT, estimado entre \rs~20 e \rs~120/ha por ano (incluindo aquisição diluída, conectividade, manutenção e software)~\cite{investidorrural_custos}. No lado do OPEX, a conectividade via \textit{chip} M2M parte de cerca de \rs~10/mês por dispositivo~\cite{iotconect_m2m}; a equipe técnica é o item dominante, com desenvolvedores de software entre \rs~3~mil (júnior) e \rs~12~mil ou mais (sênior) por mês na base CLT~\cite{salario_dev}, e pilotos de drone agrícola entre \rs~4~mil e \rs~8~mil mensais~\cite{salario_piloto}. Vale lembrar que o custo real de pessoal ao empregador costuma ser de 1,7 a 2 vezes o salário-base, em razão dos encargos. Como verificação de coerência, o preço de serviços de mapeamento por drone praticado no mercado (\rs~8 a \rs~40/ha) é da mesma ordem de grandeza do preço de \rs~22/ha/ano adotado no modelo recomendado~\cite{investidorrural_custos}, o que sustenta a plausibilidade da premissa de receita.
+
+\begin{table}[!t]
+\caption{Referências de mercado para CAPEX e OPEX (Brasil, 2024--2026). Faixas de calibração, não cotações fechadas.}
+\label{tab:capexopex}
+\centering
+\footnotesize
+\begin{tabular}{@{}llr@{}}
+\toprule
+\textbf{Tipo} & \textbf{Item} & \textbf{Faixa} \\
+\midrule
+CAPEX & Drone mapeamento multiespectral (RTK) & \rs~36--41,5~mil \\
+CAPEX/OPEX & Camada IoT (sensores), por ha/ano & \rs~20--120/ha \\
+OPEX & Conectividade M2M, por chip/mês & a partir de \rs~10 \\
+OPEX & Dev. de software (júnior--sênior)/mês & \rs~3--12~mil$+$ \\
+OPEX & Piloto de drone agrícola/mês & \rs~4--8~mil \\
+Ref. & Serviço de mapeamento por drone & \rs~8--40/ha \\
+Ref. & Serviço de pulverização por drone & \rs~80--250/ha \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!t]
+\caption{Fluxo de caixa do modelo recomendado (C --- Híbrido), em \rs}
+\label{tab:fc}
+\centering
+\footnotesize
+\begin{tabular}{@{}crrrr@{}}
+\toprule
+\textbf{Ano} & \textbf{Receita} & \textbf{Custo total} & \textbf{Fluxo líq.} & \textbf{Acumulado} \\
+\midrule
+0 & --- & --- & $-$380.000 & $-$380.000 \\
+1 & 716.667 & 1.115.000 & $-$398.333 & $-$778.333 \\
+2 & 1.840.000 & 1.752.000 & 88.000 & $-$690.333 \\
+3 & 4.120.000 & 3.136.000 & 984.000 & 293.667 \\
+4 & 8.106.667 & 5.632.000 & 2.474.667 & 2.768.333 \\
+5 & 13.633.333 & 9.090.000 & 4.543.333 & 7.311.667 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Comparação dos três modelos de receita}
+A Tabela~\ref{tab:comp} compara as três arquiteturas à TMA recomendada de 20\% (com o piso atualizado de 14,25\% e o estresse de 30\% no VPL). Os valores foram validados por duas implementações independentes (Python e JavaScript) que reproduzem os mesmos indicadores.
+
+\begin{table*}[!t]
+\caption{Comparação dos três modelos de receita (indicadores de Engenharia Econômica). Valores de VPL em \rs.}
+\label{tab:comp}
+\centering
+\footnotesize
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+\textbf{Indicador} & \textbf{A) SaaS \textit{asset-light}} & \textbf{B) DaaS frota própria} & \textbf{C) Híbrido (\textit{setup}+SaaS)} \\
+\midrule
+Investimento Ano 0 & 380.000 & 380.000 & 380.000 \\
+VPL (TMA 14,25\% --- Selic atual) & 3.622.344 & 864.845 & \textbf{3.784.968} \\
+VPL (TMA 20\% --- recomendada) & 2.788.869 & 431.690 & \textbf{2.937.891} \\
+VPL (TMA 30\% --- estresse) & 1.774.627 & $-$67.162 & \textbf{1.903.646} \\
+TIR & 79,9\% & 28,3\% & \textbf{85,6\%} \\
+\textit{Payback} simples & 2,91 anos & 4,21 anos & \textbf{2,70 anos} \\
+\textit{Payback} descontado (20\%) & 3,20 anos & 4,70 anos & \textbf{3,07 anos} \\
+IBC (20\%) & 8,34 & 2,14 & 8,73 \\
+ROIA (20\%) & 52,8\% a.a. & 16,4\% a.a. & 54,2\% a.a. \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+A leitura, sob o método de decisão entre alternativas mutuamente excludentes, é direta. O modelo \textbf{C (Híbrido)} é o melhor: a taxa de implantação adianta caixa e produz o menor \textit{payback} com o maior VPL. O modelo \textbf{A (SaaS)} é uma alternativa enxuta, simples de escalar, quase tão boa quanto C. O modelo \textbf{B (DaaS)} parece atraente pelo \textit{ticket} maior, mas é intensivo em capital (frota crescente até 46 unidades no Ano~5) e de margem fina (serviço de campo: pilotos, logística, manutenção); seu VPL é muito menor, com \textit{payback} próximo de 4,7~anos e valor negativo sob TMA de 30\%. Recomenda-se rejeitar B como núcleo, mantendo-o, no máximo, como serviço \textit{premium} pago pelo cliente.
+
+\subsubsection{A partir de quando há lucro?}
+A pergunta admite três respostas, da mais simples à mais rigorosa, para o modelo C: o \textbf{break-even operacional} (o fluxo anual deixa de ser negativo) ocorre no Ano~2 ($+$\rs~88~mil); o \textbf{\textit{payback} simples} é de $\approx$2,7~anos; e o \textbf{\textit{payback} descontado} --- definição mais rigorosa de início de criação de riqueza --- é de $\approx$3,1~anos. Como o horizonte é de 5 anos, o projeto é viável: VPL positivo, TIR muito acima da TMA e IBC maior que 1.
+
+\subsubsection{Análise de sensibilidade}
+\label{sec:sens}
+O motor do resultado é a adoção. A Tabela~\ref{tab:sens} estressa adoção e preço. Para a hipótese pessimista, apresentam-se dois limites de elasticidade de custo: ``custo fixo'' (a estrutura de custos não cai com a menor adoção --- conservador) e ``custo escalável'' (os custos acompanham proporcionalmente a queda de adoção --- otimista). A faixa resultante é a informação honesta: o desfecho pessimista vai de claramente inviável a marginalmente positivo, conforme a rapidez com que os custos se ajustam.
+
+\begin{table}[!t]
+\caption{Sensibilidade do modelo C (TMA 20\%). VPL em \rs.}
+\label{tab:sens}
+\centering
+\footnotesize
+\begin{tabular}{@{}lrl@{}}
+\toprule
+\textbf{Cenário} & \textbf{VPL (20\%)} & \textbf{Veredito} \\
+\midrule
+Otimista (ad.\ $+$25\%, pr.\ $+$10\%) & 4,80 a 6,36~mi & Muito viável \\
+Base (premissas centrais) & 2,94~mi & Viável \\
+Pessimista (ad.\ $-$40\%, pr.\ $-$15\%) & $-$1,63 a $+$0,87~mi & Limítrofe/inviável \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A conclusão de risco é que, se a contratação de hectares ficar cerca de 40\% abaixo do esperado e os custos não se ajustarem na mesma velocidade, o projeto não se paga no horizonte. A tese é, no fundo, sobre velocidade de aquisição de hectares.
+
+% =====================================================================
+\section{Case Real e Validação de Mercado}
+\label{sec:case}
+% =====================================================================
+A força do trabalho está em substituir as premissas por dados verificáveis. Esta seção separa, deliberadamente, o que já é verificável do que ainda precisa ser coletado.
+
+\textbf{Demanda validada por concorrentes (verificado).} A Perfect Flight, AgTech brasileira de gestão e rastreabilidade de pulverização aérea, reportou da ordem de 25 a 27 milhões de hectares digitalizados e monitorados (dados de 2022), o que a posiciona como uma das maiores bases de dados de pulverização do mundo~\cite{perfectflight,perfectflight_news}. A SIMA, plataforma de monitoramento agrícola de origem argentina presente em oito países da América Latina, reportava mais de 8 milhões de hectares monitorados em 2025~\cite{sima,sima_news}. Esses números confirmam a existência de demanda e de disposição a pagar; o diferencial proposto está na integração ponta a ponta e na entrega de prescrição acionável, e não em uma única função isolada.
+
+\textbf{Tamanho de mercado.} Para a ordem de grandeza atual, uma estimativa de mercado avalia o segmento global de drones agrícolas em cerca de US\$~2,41~bilhões em 2025, com projeção de US\$~5,08~bilhões até 2030 (crescimento anual da ordem de 16\%)~\cite{mordor_drones}. Projeções mais antigas e amplamente repetidas (por exemplo, a estimativa de \rs~40~bilhões para o mercado de agricultura de precisão até 2026) datam de 2022 e não devem ser apresentadas como número corrente~\cite{maissoja_mercado}; recomenda-se sempre citar a fonte e o ano.
+
+\textbf{Ordem de grandeza do valor por hectare (referência jornalística, 2022).} Como ponto de partida para dimensionar a economia por hectare, reportagem setorial estimou que a conectividade associada à agricultura de precisão poderia gerar economia da ordem de \rs~178 por hectare~\cite{canalrural_178}. O número é uma referência datada (2022) e de natureza jornalística, útil apenas como ordem de grandeza inicial: a economia efetiva de cada fazenda deve ser medida em piloto, sobretudo à luz da evidência contrária observada em pastagem~\cite{silva_maccari}.
+
+\textbf{Adoção real por produtores (verificado em reportagem, 2025).} Além dos fornecedores de tecnologia, há evidências jornalísticas recentes de adoção por grandes produtores de grãos. Reportagem de 2025 descreve uma propriedade do Grupo SLC Agrícola que, com aplicação localizada de defensivos e monitoramento de máquinas (agricultura de precisão), reduziu o uso de defensivos em até 90\%~\cite{slc_planetacampo}. Em Mato Grosso do Sul, o Grupo José Pessoa relata o uso de IA para identificar a variedade de soja ideal por talhão e o momento de plantio~\cite{josepessoa_canalrural}. Esses são casos jornalísticos de fazendas individuais --- não estudos controlados ---, mas, somados aos concorrentes, indicam que a adoção em grãos já está em curso. O contraponto da Seção~\ref{sec:rel} (pastagem) permanece válido: o ganho varia por contexto e deve ser medido em piloto.
+
+\textbf{Caso de fazenda (a coletar).} Para quantificar a proposta de valor, deve-se levantar, em uma fazenda representativa do Centro-Oeste: área, cultura, perda média por safra por detecção tardia, gasto com insumos e horas de inspeção, traduzindo-os em reais economizados por ano. Como a equipe está em Goiânia, no coração do agro, o acesso a um caso real é uma vantagem operacional.
+
+\textbf{CAPEX/OPEX (a cotar).} Os preços por hectare, o custo de nuvem, os equipamentos (drone e sensores) e a equipe são premissas próprias deste estudo, sem fonte externa; devem ser substituídos por cotações reais, datadas, e os indicadores recalculados.
+
+% =====================================================================
+\section{Riscos e Mitigações}
+% =====================================================================
+O risco número um é a adoção mais lenta que a prevista, como evidenciado na Seção~\ref{sec:sens}; mitiga-se com pilotos que comprovem o retorno em reais, canal de vendas via cooperativas e revendas e contratos plurianuais que reduzem a rotatividade. A conectividade intermitente no campo é mitigada por projeto, pela operação \textit{offline-first} no \textit{gateway} de borda. O custo de nuvem e processamento é contido empurrando-se inferência leve para a borda, o que reduz o OPEX variável. A qualidade do dado e a segurança das recomendações são tratadas por validação humana (agrônomo) antes da ação em campo. Por fim, a concentração de receita em poucos clientes grandes é mitigada pela diversificação da base. Há ainda um risco de custo de capital: parte relevante do CAPEX (drones e sensores) é importada e exposta à variação cambial, o que recomenda contratos de fornecimento e a opção, sempre que possível, por modelo \textit{asset-light} que transfira o equipamento ao cliente ou a parceiros. Esses riscos são qualitativos e não alteram os indicadores, mas condicionam a probabilidade de se realizar o cenário-base.
+
+% =====================================================================
+\section{Conclusões}
+% =====================================================================
+O problema é real e validado pelo mercado: o risco não é de demanda, mas de execução comercial. A solução proposta tem diferencial defensável --- integração, operação \textit{offline-first} e tradução em prescrição acionável --- e é construível em fases. Financeiramente, no modelo recomendado (Híbrido), a análise indica viabilidade: VPL positivo e TIR muito acima da TMA em todos os níveis testados (14,25\%, 20\% e 30\%), com \textit{payback} descontado de aproximadamente três anos.
+
+A honestidade analítica reside na sensibilidade: se a adoção decepcionar em cerca de 40\% e os custos não se ajustarem, o projeto não se paga no horizonte. Logo, a decisão de investir é, fundamentalmente, uma decisão sobre a capacidade de acelerar a adoção de hectares --- por pilotos que comprovem o retorno em reais, canais via cooperativas e revendas e contratos plurianuais. Os números aqui apresentados são premissas conferidas, não dados verificados; a defesa final depende de substituí-los pelos dados reais da Seção~\ref{sec:case}.
+
+% =====================================================================
+\begin{thebibliography}{00}
+\footnotesize
+% Entradas verificadas nesta revisão estão completas; as marcadas "[verificar]"
+% não foram totalmente confirmadas e devem ser conferidas antes da entrega.
+
+\bibitem{embrapa_ia} EMBRAPA, ``Agricultura digital e inteligência artificial,'' Infoteca-e, Embrapa Agricultura Digital, 2025. [Online]. Disponível: \url{https://www.infoteca.cnptia.embrapa.br/infoteca/handle/doc/1180748}. Acesso em: 24 jun.\ 2026.
+
+\bibitem{embrapa_vc} EMBRAPA, ``Visão Computacional Aplicada na Agricultura.'' [Online]. Disponível: \url{https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1126261/}. % [verificar] ano de publicação
+
+\bibitem{bndes_iot} BNDES; EMBRAPA, ``Internet das Coisas: um plano de ação para o Brasil --- Agricultura (Embrapa).'' [Online]. Disponível: \url{https://www.bndes.gov.br/arquivos/iot/04-embrapa.pdf}. % [verificar] ano
+
+\bibitem{smartfarming} ``Smart Farming Review,'' \textit{Computers and Electronics in Agriculture}, ScienceDirect. [Online]. Disponível: \url{https://www.sciencedirect.com/science/article/abs/pii/S0924424723004545}. % [verificar] autores, ano, vol., pp.
+
+\bibitem{sbc_vc} Sociedade Brasileira de Computação, ``Visão Computacional na Agricultura de Precisão,'' Anais (ERAMIA-RS). [Online]. Disponível: \url{https://sol.sbc.org.br/index.php/eramiars/article/view/39457}. % [verificar] autores e ano
+
+\bibitem{artigo_efficientnet} F. R. D. C. Borges e J. M. da Silva, ``Visão computacional para agricultura de precisão: detecção de pragas com deep learning em ambientes naturais,'' \textit{Revista DELOS}, Curitiba, v.~19, n.~77, p.~01--14, 2026. DOI: 10.55905/rdelosv19.n77-133.
+
+\bibitem{durmus_iot} H. Durmuş e E. O. Güneş, ``Integration of the Mobile Robot and Internet of Things to Collect Data from the Agricultural Fields,'' in \textit{2019 8th International Conference on Agro-Geoinformatics (Agro-Geoinformatics)}, pp.~1--5, 2019. DOI: 10.1109/Agro-Geoinformatics.2019.8820578.
+
+\bibitem{sodebras} ``Análise de Dados Massivos de Secadores de Grãos via IoT: Eficiência, Riscos e Oportunidades,'' \textit{Revista SODEBRAS}, v.~47, n.~Especial (XLVII International Sodebras Congress), 2025. ISSN 1809-3957. % [verificar] autores
+
+\bibitem{silva_maccari} D. Silva e M. Maccari (orient.), ``Viabilidade Técnica e Econômica do Sistema de Agricultura de Precisão em Áreas de Pastagens,'' Iniciação Científica, Curso de Agronomia, Universidade do Oeste de Santa Catarina (UNOESC), Xanxerê, SC, 2014. Estudo experimental em pastagem Tifton~85 (custo da precisão $\approx$32\% superior; sem diferença significativa de produtividade).
+
+\bibitem{bcb} Banco Central do Brasil, ``Taxa Selic.'' [Online]. Disponível: \url{https://www.bcb.gov.br}. Acesso em: 24 jun.\ 2026.
+
+\bibitem{copom_jun2026} Banco Central do Brasil, ``Comunicado e Ata da reunião do Copom de 17/06/2026 --- Selic reduzida para 14,25\% a.a.,'' jun.\ 2026.
+
+\bibitem{perfectflight} Perfect Flight. [Online]. Disponível: \url{https://www.perfectflight.com.br}. Acesso em: 24 jun.\ 2026.
+
+\bibitem{perfectflight_news} ``Perfect Flight atinge $\sim$25 milhões de hectares digitalizados e monitorados,'' 2022 (dados de 2022). % [verificar] veículo/data exatos
+
+\bibitem{sima} SIMA --- Sistema Integrado de Monitoramento Agrícola. [Online]. Disponível: \url{https://sima.ag/pt}. Acesso em: 24 jun.\ 2026.
+
+\bibitem{sima_news} ``SIMA ultrapassa 8 milhões de hectares monitorados,'' 2025. % [verificar] veículo/data exatos
+
+\bibitem{maissoja_mercado} ``Agricultura de Precisão deve crescer R\$~40 bi até 2026,'' 2022 (projeção antiga; tratar com cautela).
+
+\bibitem{wimilk} WiMilk --- AgTech de monitoramento na pecuária leiteira (IA e visão computacional). Estudo de caso; resultados divulgados pela empresa. % [verificar] fonte e data de acesso
+
+\bibitem{embrapa_ap_cana} EMBRAPA --- Agência de Informação Tecnológica (Ageitec), ``Agricultura de Precisão'' (cana-de-açúcar). [Online]. Disponível: \url{https://www.embrapa.br/web/agencia-de-informacao-tecnologica/cultivos/cana-de-acucar/producao/avanco-tecnologico/agricultura-de-precisao}. Acesso em: 24 jun.\ 2026.
+
+\bibitem{fapesp_drone} ``Radar em drone facilita monitoramento agrícola,'' \textit{Pesquisa FAPESP}. [Online]. Disponível: \url{https://revistapesquisa.fapesp.br/radar-em-drone-facilita-monitoramento-agricola/}. Acesso em: 24 jun.\ 2026.
+
+\bibitem{fundaj_drones} Fundação Joaquim Nabuco (Fundaj), ``Drones agrícolas: tudo sobre essa inovação e como ela pode ser utilizada hoje,'' Observa Fundaj. [Online]. Disponível: \url{https://www.gov.br/fundaj/pt-br/destaques/observa-fundaj-itens/observa-fundaj/tecnologias-de-convivencias-com-as-secas/drones-agricolas-tudo-sobre-essa-inovacao-e-como-ela-pode-ser-utilizada-hoje-1}. Acesso em: 24 jun.\ 2026.
+
+\bibitem{canalrural_178} V. Faverin, ``Conectividade no campo pode trazer economia de R\$~178 por hectare,'' \textit{Canal Rural}, jan.\ 2022. [Online]. Disponível: \url{https://www.canalrural.com.br/projetos/alianca-da-soja/conectividade-agricultura-de-precisao-economia-custos-producao/}. Acesso em: 24 jun.\ 2026.
+
+\bibitem{slc_planetacampo} Y. Bonfim, ``Fazenda reduz defensivos em 90\% com agricultura de precisão'' (propriedade do Grupo SLC Agrícola), \textit{Planeta Campo / Canal Rural}, 2025. [Online]. Disponível: \url{https://planetacampo.canalrural.com.br/noticias/fazenda-reduz-defensivos-em-90-com-agricultura-de-precisao/}. Acesso em: 24 jun.\ 2026.
+
+\bibitem{josepessoa_canalrural} G. Almeida, ```Quem não se moderniza fica para trás', diz sojicultor de MS que aposta em IA no campo'' (Grupo José Pessoa), \textit{Canal Rural}, nov.\ 2025. [Online]. Disponível: \url{https://www.canalrural.com.br/agricultura/projeto-soja-brasil/quem-nao-se-moderniza-fica-para-tras-diz-sojicultor-de-ms-que-aposta-em-inteligencia-artificial-no-campo/}. Acesso em: 24 jun.\ 2026.
+
+\bibitem{drone_mavic3m} Levantamento de preço de varejo do drone DJI Mavic~3 Multispectral (RTK) em lojas brasileiras (DronesX, LiliVendas, CentralDrone), 2025--2026. Faixa observada: \rs~36.000--41.500.
+
+\bibitem{investidorrural_custos} ``Tecnologia no campo: custos, economia e ROI da agricultura de precisão,'' \textit{Investidor Rural}, 2026. [Online]. Disponível: \url{https://investidorrural.com.br/tecnologia-no-campo-custos-economia-e-roi-da-agricultura-de-precisao-no-agro/}. Acesso em: 24 jun.\ 2026. (Faixas de mercado: IoT \rs~20--120/ha/ano; mapeamento \rs~8--40/ha; pulverização \rs~80--250/ha.)
+
+\bibitem{iotconect_m2m} ``Chip M2M: quanto custa e onde contratar,'' IOT Conect, 2024. [Online]. Disponível: \url{https://iotconect.com.br/chip-m2m-mensalidade-quanto-custa/}. Mensalidade a partir de \rs~10/chip.
+
+\bibitem{salario_dev} Levantamentos de salário de desenvolvedores no Brasil (2025--2026): querobolsa, meutudo, Microlins, Glassdoor (compilação). Faixas CLT-base: júnior \rs~3--6~mil; pleno \rs~5--11~mil; sênior \rs~8--12~mil$+$.
+
+\bibitem{salario_piloto} ``Quanto ganha um piloto de drone agrícola'' (compilação), \textit{IstoÉ Dinheiro}, \textit{O Tempo} (Firjan: média $\approx$\rs~8,3~mil) e outros, 2025. Faixa típica no agro: \rs~4--8~mil/mês.
+
+\bibitem{mordor_drones} Mordor Intelligence, ``Mercado de drones agrícolas'' (citado por \textit{O Tempo}, jun.\ 2025): $\approx$US\$~2,41~bi em 2025 e US\$~5,08~bi até 2030. % [verificar] valores diretamente no relatório Mordor
+
+\end{thebibliography}
+
+\end{document}

@@ -2,7 +2,7 @@
 
 ### IA · Drones · IoT · Visão Computacional — Relatório de Viabilidade (Engenharia Econômica)
 
-**Equipe:** [preencher] · **Data:** [preencher]/2026 · **Produto (nome a definir)**
+**Equipe:** [Higor Ferreira Silva; Igor Barbosa Lino; Wallyson Miranda Aguiar] · **Data:** [25/06]/2026 · **Produto (nome a definir)**
 
 > Os valores financeiros deste relatório são **premissas de trabalho conferidas matematicamente**, não dados de mercado verificados. A versão final deve substituí-los pelas cotações e preços de concorrentes coletados (Seção 4). A planilha `modelo_financeiro.xlsx` recalcula tudo automaticamente ao editar as premissas.
 
