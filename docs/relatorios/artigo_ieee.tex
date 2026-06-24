@@ -48,7 +48,7 @@ Engenharia Econômica, VPL, TIR, \textit{payback}, AgTech, agricultura de precis
 % =====================================================================
 \section{Introdução e Contextualização}
 % =====================================================================
-O agronegócio brasileiro opera sob margens apertadas, exigência crescente de rastreabilidade e janelas de decisão curtas: pragas, doenças e estresse hídrico podem comprometer a safra em poucos dias se não forem detectados a tempo. Simultaneamente, três habilitadores tecnológicos amadureceram: a expansão da conectividade rural, a queda no custo de drones e sensores, e o avanço da IA e da visão computacional a níveis de precisão operacional~\cite{embrapa_ia,smartfarming,bndes_iot}. O resultado é uma transição em curso para ``fazendas inteligentes'', em que o dado coletado em campo passa a orientar cada operação de manejo. Esse movimento já se reflete no mercado: o segmento global de drones agrícolas foi estimado em cerca de US\$~2,41~bilhões em 2025, com forte crescimento projetado~\cite{mordor_drones}.
+O agronegócio brasileiro opera sob margens apertadas, exigência crescente de rastreabilidade e janelas de decisão curtas: pragas, doenças e estresse hídrico podem comprometer a safra em poucos dias se não forem detectados a tempo. Simultaneamente, três habilitadores tecnológicos amadureceram: a expansão da conectividade rural, a queda no custo de drones e sensores, e o avanço da IA e da visão computacional a níveis de precisão operacional~\cite{embrapa_ia,smartfarming,bndes_iot}. O resultado é uma transição em curso para ``fazendas inteligentes'', em que o dado coletado em campo passa a orientar cada operação de manejo. Esse movimento já se reflete no mercado: o segmento global de drones agrícolas foi avaliado em cerca de US\$~1,5~bilhão em 2025, com projeção de US\$~3,9~bilhões até 2031~\cite{mordor_drones}.
 
 Diferentemente de mercados em que a tecnologia ainda precisa ser provada, aqui a demanda já está validada por concorrentes ativos com escala relevante (Seção~\ref{sec:case}). O risco, portanto, não é de mercado, mas de execução comercial. O papel da análise de Engenharia Econômica é duplo: provar que o investimento se paga --- e em quanto tempo --- tanto para o produtor quanto para o negócio que oferece a plataforma.
 
@@ -149,7 +149,7 @@ A referência de custo de oportunidade é a Selic vigente, \textbf{14,25\% a.a.}
 As premissas, conferidas matematicamente mas \emph{não} verificadas no mercado, são: investimento inicial de \rs~380.000 no Ano~0; horizonte de 5 anos; curva de adoção de 25~mil a 550~mil hectares ativos; fazenda média de 3.000~ha por cliente; e, no modelo recomendado, preço de \rs~22/ha/ano somado a uma taxa de implantação. A Tabela~\ref{tab:fc} apresenta o fluxo de caixa do modelo Híbrido.
 
 \subsubsection{Referências de mercado para CAPEX e OPEX}
-Para ancorar a ordem de grandeza das premissas, levantaram-se faixas reais de preço de fornecedores e fontes setoriais brasileiros (2024--2026), resumidas na Tabela~\ref{tab:capexopex}. Trata-se de \emph{referências de calibração}, não de cotações fechadas: os valores oscilam com fornecedor, configuração, região e escala, e devem ser confirmados por orçamento na data da compra. No lado do CAPEX, um drone de mapeamento multiespectral (classe DJI Mavic~3 Multispectral, com RTK) situa-se entre \rs~36~mil e \rs~41,5~mil no varejo nacional~\cite{drone_mavic3m}. Estações agrometeorológicas e redes de sensores de solo são, em geral, vendidas sob orçamento; uma referência útil é o custo \emph{por hectare} da camada de IoT, estimado entre \rs~20 e \rs~120/ha por ano (incluindo aquisição diluída, conectividade, manutenção e software)~\cite{investidorrural_custos}. No lado do OPEX, a conectividade via \textit{chip} M2M parte de cerca de \rs~10/mês por dispositivo~\cite{iotconect_m2m}; a equipe técnica é o item dominante, com desenvolvedores de software entre \rs~3~mil (júnior) e \rs~12~mil ou mais (sênior) por mês na base CLT~\cite{salario_dev}, e pilotos de drone agrícola entre \rs~4~mil e \rs~8~mil mensais~\cite{salario_piloto}. Vale lembrar que o custo real de pessoal ao empregador costuma ser de 1,7 a 2 vezes o salário-base, em razão dos encargos. Como verificação de coerência, o preço de serviços de mapeamento por drone praticado no mercado (\rs~8 a \rs~40/ha) é da mesma ordem de grandeza do preço de \rs~22/ha/ano adotado no modelo recomendado~\cite{investidorrural_custos}, o que sustenta a plausibilidade da premissa de receita.
+Para ancorar a ordem de grandeza das premissas, levantaram-se faixas reais de preço de fornecedores e fontes setoriais brasileiros (2024--2026), resumidas na Tabela~\ref{tab:capexopex}. Trata-se de \emph{referências de calibração}, não de cotações fechadas: os valores oscilam com fornecedor, configuração, região e escala, e devem ser confirmados por orçamento na data da compra. No lado do CAPEX, um drone de mapeamento multiespectral (classe DJI Mavic~3 Multispectral, com RTK) situa-se entre \rs~36~mil e \rs~41,5~mil no varejo nacional~\cite{drone_mavic3m}. Sensores de solo partem de cerca de \rs~1,5~mil~\cite{sensor_solo}, ao passo que estações agrometeorológicas profissionais são vendidas sob orçamento, sem preço público~\cite{estacao_agro}; uma referência útil é o custo \emph{por hectare} da camada de IoT, estimado entre \rs~20 e \rs~120/ha por ano~\cite{investidorrural_custos}. No modelo~B (frota própria), um drone de pulverização classe DJI Agras~T50 (kit) custa de \rs~135~mil a \rs~180~mil~\cite{drone_agras}. No lado do OPEX, a conectividade rural via satélite (Starlink) custa de \rs~164 a \rs~329/mês mais o kit de antena (\rs~0,8--2,4~mil)~\cite{starlink}, e o \textit{chip} M2M parte de cerca de \rs~10/mês por dispositivo~\cite{iotconect_m2m}; a equipe técnica é o item dominante, com desenvolvedores de software entre \rs~3~mil (júnior) e \rs~12~mil ou mais (sênior) por mês na base CLT~\cite{salario_dev}, e pilotos de drone agrícola entre \rs~4~mil e \rs~8~mil mensais~\cite{salario_piloto}. Vale lembrar que o custo real de pessoal ao empregador costuma ser de 1,7 a 2 vezes o salário-base, em razão dos encargos. Como verificação de coerência, o preço de serviços de mapeamento por drone praticado no mercado (\rs~8 a \rs~40/ha) é da mesma ordem de grandeza do preço de \rs~22/ha/ano adotado no modelo recomendado~\cite{investidorrural_custos}, o que sustenta a plausibilidade da premissa de receita.
 
 \begin{table}[!t]
 \caption{Referências de mercado para CAPEX e OPEX (Brasil, 2024--2026). Faixas de calibração, não cotações fechadas.}
@@ -161,12 +161,40 @@ Para ancorar a ordem de grandeza das premissas, levantaram-se faixas reais de pr
 \textbf{Tipo} & \textbf{Item} & \textbf{Faixa} \\
 \midrule
 CAPEX & Drone mapeamento multiespectral (RTK) & \rs~36--41,5~mil \\
+CAPEX & Drone pulverização (Agras T50, kit) --- só mod.~B & \rs~135--180~mil \\
+CAPEX & Sensor de solo (umidade/EC/temp/NPK) & a partir de \rs~1,5~mil \\
+CAPEX & Estação agrometeorológica profissional & sob orçamento \\
+CAPEX & Kit Starlink (antena) & \rs~0,8--2,4~mil \\
 CAPEX/OPEX & Camada IoT (sensores), por ha/ano & \rs~20--120/ha \\
+OPEX & Conectividade Starlink/mês & \rs~164--329 \\
 OPEX & Conectividade M2M, por chip/mês & a partir de \rs~10 \\
 OPEX & Dev. de software (júnior--sênior)/mês & \rs~3--12~mil$+$ \\
 OPEX & Piloto de drone agrícola/mês & \rs~4--8~mil \\
 Ref. & Serviço de mapeamento por drone & \rs~8--40/ha \\
 Ref. & Serviço de pulverização por drone & \rs~80--250/ha \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Reconstrução bottom-up (verificação de coerência)}
+Para tornar as métricas o mais transparentes possível, a Tabela~\ref{tab:bottomup} reconstrói o investimento do Ano~0 a partir dos preços unitários levantados, distinguindo explicitamente o que tem \emph{fonte} (preço unitário) do que é \emph{premissa} (quantidade e duração). O total reconstruído (\rs~254--401~mil) contém a premissa de \rs~380~mil, o que sustenta sua ordem de grandeza. De modo análogo, um OPEX de Ano~1 reconstruído com uma equipe de cerca de cinco pessoas (encargos de 1,8$\times$ sobre a folha) resulta em aproximadamente \rs~805~mil/ano, coerente com o custo fixo de \rs~900~mil adotado no Ano~1.
+
+\begin{table}[!t]
+\caption{Reconstrução bottom-up do CAPEX do Ano~0. Preços unitários têm fonte (Tabela~\ref{tab:capexopex}); quantidades e durações são premissas, sinalizadas.}
+\label{tab:bottomup}
+\centering
+\footnotesize
+\begin{tabular}{@{}llr@{}}
+\toprule
+\textbf{Componente (Ano 0)} & \textbf{Base} & \textbf{Faixa} \\
+\midrule
+Drone multiespectral RTK ($\times$1) & varejo [fonte] & \rs~36--41,5~mil \\
+Sensores + estação IoT (piloto) & sensor $\geq$\rs~1,5~mil [fonte]; estação sob orçam. & \rs~15--40~mil \\
+Equipe MVP ($\approx$6~m, 2--3 devs) & unit.\ [fonte]; qtd [assum.] & \rs~173--259~mil \\
+Infra inicial + jurídico & [estimado] & \rs~30--60~mil \\
+\midrule
+\textbf{Total reconstruído} & & \textbf{\rs~254--401~mil} \\
+\textbf{Premissa do modelo} & & \textbf{\rs~380~mil} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -250,7 +278,7 @@ A força do trabalho está em substituir as premissas por dados verificáveis. E
 
 \textbf{Demanda validada por concorrentes (verificado).} A Perfect Flight, AgTech brasileira de gestão e rastreabilidade de pulverização aérea, reportou da ordem de 25 a 27 milhões de hectares digitalizados e monitorados (dados de 2022), o que a posiciona como uma das maiores bases de dados de pulverização do mundo~\cite{perfectflight,perfectflight_news}. A SIMA, plataforma de monitoramento agrícola de origem argentina presente em oito países da América Latina, reportava mais de 8 milhões de hectares monitorados em 2025~\cite{sima,sima_news}. Esses números confirmam a existência de demanda e de disposição a pagar; o diferencial proposto está na integração ponta a ponta e na entrega de prescrição acionável, e não em uma única função isolada.
 
-\textbf{Tamanho de mercado.} Para a ordem de grandeza atual, uma estimativa de mercado avalia o segmento global de drones agrícolas em cerca de US\$~2,41~bilhões em 2025, com projeção de US\$~5,08~bilhões até 2030 (crescimento anual da ordem de 16\%)~\cite{mordor_drones}. Projeções mais antigas e amplamente repetidas (por exemplo, a estimativa de \rs~40~bilhões para o mercado de agricultura de precisão até 2026) datam de 2022 e não devem ser apresentadas como número corrente~\cite{maissoja_mercado}; recomenda-se sempre citar a fonte e o ano.
+\textbf{Tamanho de mercado.} Para a ordem de grandeza atual, a página do relatório da Mordor Intelligence (dados de jan.\ 2026) avalia o segmento global de drones agrícolas em cerca de US\$~1,5~bilhão em 2025, com projeção de US\$~3,9~bilhões até 2031 (CAGR de $\approx$16,7\%)~\cite{mordor_drones}. As estimativas, contudo, variam conforme a fonte e a edição --- de $\approx$US\$~1,5~bi a $\approx$US\$~5~bi para 2025 ---, o que reforça a cautela ao citar tamanho de mercado. Projeções mais antigas e amplamente repetidas (por exemplo, a estimativa de \rs~40~bilhões para o mercado de agricultura de precisão até 2026) datam de 2022 e não devem ser apresentadas como número corrente~\cite{maissoja_mercado}; recomenda-se sempre citar a fonte e o ano.
 
 \textbf{Ordem de grandeza do valor por hectare (referência jornalística, 2022).} Como ponto de partida para dimensionar a economia por hectare, reportagem setorial estimou que a conectividade associada à agricultura de precisão poderia gerar economia da ordem de \rs~178 por hectare~\cite{canalrural_178}. O número é uma referência datada (2022) e de natureza jornalística, útil apenas como ordem de grandeza inicial: a economia efetiva de cada fazenda deve ser medida em piloto, sobretudo à luz da evidência contrária observada em pastagem~\cite{silva_maccari}.
 
@@ -280,19 +308,19 @@ A honestidade analítica reside na sensibilidade: se a adoção decepcionar em c
 
 \bibitem{embrapa_ia} EMBRAPA, ``Agricultura digital e inteligência artificial,'' Infoteca-e, Embrapa Agricultura Digital, 2025. [Online]. Disponível: \url{https://www.infoteca.cnptia.embrapa.br/infoteca/handle/doc/1180748}. Acesso em: 24 jun.\ 2026.
 
-\bibitem{embrapa_vc} EMBRAPA, ``Visão Computacional Aplicada na Agricultura.'' [Online]. Disponível: \url{https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1126261/}. % [verificar] ano de publicação
+\bibitem{embrapa_vc} T. T. Santos, J. G. A. Barbedo, S. Ternes, J. Camargo Neto, L. V. Koenigkan e K. X. S. de Souza, ``Visão computacional aplicada na agricultura,'' in \textit{Agricultura digital}, cap.~6. Campinas: Embrapa Agricultura Digital, 2020. [Online]. Disponível: \url{https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1126261/}.
 
-\bibitem{bndes_iot} BNDES; EMBRAPA, ``Internet das Coisas: um plano de ação para o Brasil --- Agricultura (Embrapa).'' [Online]. Disponível: \url{https://www.bndes.gov.br/arquivos/iot/04-embrapa.pdf}. % [verificar] ano
+\bibitem{bndes_iot} S. M. F. S. Massruhá, ``IoT na Embrapa,'' BNDES --- Estudo Nacional de IoT (Produção de Alimentos, Fibras e Energia), jun.\ 2018. [Online]. Disponível: \url{https://www.bndes.gov.br/arquivos/iot/04-embrapa.pdf}.
 
-\bibitem{smartfarming} ``Smart Farming Review,'' \textit{Computers and Electronics in Agriculture}, ScienceDirect. [Online]. Disponível: \url{https://www.sciencedirect.com/science/article/abs/pii/S0924424723004545}. % [verificar] autores, ano, vol., pp.
+\bibitem{smartfarming} C. Prakash, L. P. Singh, A. Gupta e S. K. Lohan, ``Advancements in smart farming: A comprehensive review of IoT, wireless communication, sensors, and hardware for agricultural automation,'' \textit{Computers and Electronics in Agriculture}, Elsevier, 2023. [Online]. Disponível: \url{https://www.sciencedirect.com/science/article/abs/pii/S0924424723004545}.
 
-\bibitem{sbc_vc} Sociedade Brasileira de Computação, ``Visão Computacional na Agricultura de Precisão,'' Anais (ERAMIA-RS). [Online]. Disponível: \url{https://sol.sbc.org.br/index.php/eramiars/article/view/39457}. % [verificar] autores e ano
+\bibitem{sbc_vc} F. S. de Oliveira, D. E. Santos, F. R. P. Bruhn, B. C. Bohm e B. S. Santana, ``Visão Computacional na Agricultura de Precisão: Uma Análise Comparativa de Arquiteturas CNN no Diagnóstico de Doenças Foliares do Milho,'' in \textit{Anais da I Escola Regional de Aprendizado de Máquina e Inteligência Artificial da Região Sul (ERAMIA-RS)}, Porto Alegre, RS, 2025. [Online]. Disponível: \url{https://sol.sbc.org.br/index.php/eramiars/article/view/39457}.
 
 \bibitem{artigo_efficientnet} F. R. D. C. Borges e J. M. da Silva, ``Visão computacional para agricultura de precisão: detecção de pragas com deep learning em ambientes naturais,'' \textit{Revista DELOS}, Curitiba, v.~19, n.~77, p.~01--14, 2026. DOI: 10.55905/rdelosv19.n77-133.
 
 \bibitem{durmus_iot} H. Durmuş e E. O. Güneş, ``Integration of the Mobile Robot and Internet of Things to Collect Data from the Agricultural Fields,'' in \textit{2019 8th International Conference on Agro-Geoinformatics (Agro-Geoinformatics)}, pp.~1--5, 2019. DOI: 10.1109/Agro-Geoinformatics.2019.8820578.
 
-\bibitem{sodebras} ``Análise de Dados Massivos de Secadores de Grãos via IoT: Eficiência, Riscos e Oportunidades,'' \textit{Revista SODEBRAS}, v.~47, n.~Especial (XLVII International Sodebras Congress), 2025. ISSN 1809-3957. % [verificar] autores
+\bibitem{sodebras} D. Schmidt e M. A. Sellitto, ``Análise de Dados Massivos de Secadores de Grãos via IoT: Eficiência, Riscos e Oportunidades,'' \textit{Revista SODEBRAS}, v.~47, n.~Especial (XLVII International Sodebras Congress), Campinas, SP, set.\ 2025. ISSN 1809-3957.
 
 \bibitem{silva_maccari} D. Silva e M. Maccari (orient.), ``Viabilidade Técnica e Econômica do Sistema de Agricultura de Precisão em Áreas de Pastagens,'' Iniciação Científica, Curso de Agronomia, Universidade do Oeste de Santa Catarina (UNOESC), Xanxerê, SC, 2014. Estudo experimental em pastagem Tifton~85 (custo da precisão $\approx$32\% superior; sem diferença significativa de produtividade).
 
@@ -310,7 +338,7 @@ A honestidade analítica reside na sensibilidade: se a adoção decepcionar em c
 
 \bibitem{maissoja_mercado} ``Agricultura de Precisão deve crescer R\$~40 bi até 2026,'' 2022 (projeção antiga; tratar com cautela).
 
-\bibitem{wimilk} WiMilk --- AgTech de monitoramento na pecuária leiteira (IA e visão computacional). Estudo de caso; resultados divulgados pela empresa. % [verificar] fonte e data de acesso
+\bibitem{wimilk} WiMilk --- AgTech de detecção precoce de mastite bovina (IA e visão computacional). Equipe: G. Vargas (UEG), L. Plaster (UFG) e P. Viana (PUC-GO); vencedora do Desafio AgroStartup 2025 (Senar Goiás). Reportagem: \textit{Mais Goiás}, dez.\ 2025.
 
 \bibitem{embrapa_ap_cana} EMBRAPA --- Agência de Informação Tecnológica (Ageitec), ``Agricultura de Precisão'' (cana-de-açúcar). [Online]. Disponível: \url{https://www.embrapa.br/web/agencia-de-informacao-tecnologica/cultivos/cana-de-acucar/producao/avanco-tecnologico/agricultura-de-precisao}. Acesso em: 24 jun.\ 2026.
 
@@ -334,7 +362,15 @@ A honestidade analítica reside na sensibilidade: se a adoção decepcionar em c
 
 \bibitem{salario_piloto} ``Quanto ganha um piloto de drone agrícola'' (compilação), \textit{IstoÉ Dinheiro}, \textit{O Tempo} (Firjan: média $\approx$\rs~8,3~mil) e outros, 2025. Faixa típica no agro: \rs~4--8~mil/mês.
 
-\bibitem{mordor_drones} Mordor Intelligence, ``Mercado de drones agrícolas'' (citado por \textit{O Tempo}, jun.\ 2025): $\approx$US\$~2,41~bi em 2025 e US\$~5,08~bi até 2030. % [verificar] valores diretamente no relatório Mordor
+\bibitem{mordor_drones} Mordor Intelligence, ``Agriculture Drones Market.'' Página do relatório (dados de jan.\ 2026): US\$~1,5~bi (2025) $\to$ US\$~3,9~bi (2031), CAGR 16,72\%. Nota: estimativas variam por edição (\textit{release} de out.\ 2025: US\$~5~bi $\to$ US\$~13~bi até 2030). [Online]. Disponível: \url{https://www.mordorintelligence.com/industry-reports/agriculture-drones-market}.
+
+\bibitem{drone_agras} Levantamento de preço de varejo do drone DJI Agras~T50 (kit de pulverização): Próspera Distribuição (\rs~135.000) e Lojão do Drone (\rs~179.780), 2025--2026.
+
+\bibitem{sensor_solo} Medidor/sensor de solo (umidade, condutividade elétrica, temperatura, NPK): Hensistemas, a partir de \rs~1.499, 2024--2026.
+
+\bibitem{estacao_agro} Estação agrometeorológica profissional: Sigma Sensors; Agrosystem --- venda sob orçamento (sem preço público), 2025--2026.
+
+\bibitem{starlink} Kit e planos Starlink Brasil: kit \rs~799 (Mini) a \rs~2.400 (Padrão), até \rs~12.830 (alto desempenho); plano residencial \rs~236/mês (promo \rs~164/mês no 1\textsuperscript{o} ano), comercial a partir de \rs~329/mês. \textit{minhaconexao} / \textit{Compre Rural}, 2025--2026.
 
 \end{thebibliography}
 
