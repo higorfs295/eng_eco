@@ -13,10 +13,10 @@ const C = {
 const MODEL_COLOR = { A: C.blue, B: C.red, C: C.green };
 
 // ---- premissas fixas (curvas) — editáveis via multiplicadores ----
-const HA = [0, 25000, 70000, 160000, 320000, 550000];
-const HN = [0, 25000, 45000, 90000, 160000, 230000];
-const CF_AC = [0, 900000, 1200000, 1900000, 3200000, 5000000];
-const CF_B = [0, 1100000, 1700000, 2800000, 4400000, 6500000];
+const HA = [0, 25000, 50000, 80000, 115000, 150000];
+const HN = [0, 25000, 25000, 30000, 35000, 35000];
+const CF_AC = [0, 900000, 1150000, 1500000, 1850000, 2200000];
+const CF_B = [0, 900000, 1150000, 1500000, 1850000, 2200000];
 
 // ---- matemática financeira ----
 const npv = (r, f) => f.reduce((s, cf, t) => s + cf / Math.pow(1 + r, t), 0);
@@ -64,7 +64,7 @@ function buildModel(kind, p) {
   return {
     flows,
     vpl: npv(tma, flows),
-    vpl145: npv(0.145, flows),
+    vpl145: npv(0.1425, flows),
     vpl30: npv(0.30, flows),
     tir: irr(flows),
     pbs: payback(flows, false, tma),
@@ -105,7 +105,7 @@ function Verdict({ ok }) {
 export default function App() {
   const [s, setS] = useState({
     invest: 380000, tma: 0.20, adoc: 1.0, price: 1.0, cost: 1.0,
-    pA: 25, pB: 80, pC: 22, setup: 20000, fm: 3000,
+    pA: 40, pB: 80, pC: 40, setup: 20000, fm: 3000,
   });
   const set = (k) => (v) => setS((o) => ({ ...o, [k]: v }));
   const [tab, setTab] = useState("comp");
@@ -149,7 +149,7 @@ export default function App() {
 
   const rows = [
     ["VPL (TMA atual)", (m) => brl0(m.vpl)],
-    ["VPL a 14,5%", (m) => brl0(m.vpl145)],
+    ["VPL a 14,25%", (m) => brl0(m.vpl145)],
     ["VPL a 30%", (m) => brl0(m.vpl30)],
     ["TIR", (m) => pct(m.tir)],
     ["Payback simples", (m) => yrs(m.pbs)],
@@ -215,7 +215,7 @@ export default function App() {
                 ))}
               </div>
             )}
-            <button onClick={() => setS({ invest: 380000, tma: 0.20, adoc: 1, price: 1, cost: 1, pA: 25, pB: 80, pC: 22, setup: 20000, fm: 3000 })}
+            <button onClick={() => setS({ invest: 380000, tma: 0.20, adoc: 1, price: 1, cost: 1, pA: 40, pB: 80, pC: 40, setup: 20000, fm: 3000 })}
               className="mt-3 w-full py-1.5 rounded-lg text-sm font-medium"
               style={{ background: "#EDEAE0", color: C.ink }}>
               Restaurar premissas base
@@ -234,7 +234,7 @@ export default function App() {
             </div>
             <div className="rounded-xl p-3 text-sm" style={{ background: "#EEF3E9", border: `1px solid ${C.line}`, color: C.ink }}>
               {beAdoc
-                ? <>Leitura: o modelo C continua viável enquanto a adoção ficar acima de <b>{Math.round(beAdoc * 100)}%</b> da curva base (≈ {Math.round(550000 * beAdoc).toLocaleString("pt-BR")} ha no Ano 5). Hoje você está em <b>{Math.round(s.adoc * 100)}%</b>.</>
+                ? <>Leitura: o modelo C continua viável enquanto a adoção ficar acima de <b>{Math.round(beAdoc * 100)}%</b> da curva base (≈ {Math.round(150000 * beAdoc).toLocaleString("pt-BR")} ha no Ano 5). Hoje você está em <b>{Math.round(s.adoc * 100)}%</b>.</>
                 : <>Nesta combinação de preço/custo, o modelo C não atinge VPL = 0 dentro da faixa de adoção testada.</>}
             </div>
           </div>
@@ -330,7 +330,7 @@ export default function App() {
         </div>
 
         <p className="text-xs mt-4" style={{ color: C.muted }}>
-          Os valores são <b>premissas conferidas matematicamente</b>, não dados de mercado verificados. A TMA recomendada (20%) parte da Selic de 14,5% (Copom, jun/2026) mais prêmio de risco — reconfirme na data da entrega. Modelo B compra frota "quando necessária" (capacidade 12.000 ha/unidade, R$ 120 mil/unidade).
+          A TMA recomendada (20%) parte da Selic de 14,25% (Copom, 17/06/2026) mais prêmio de risco . Modelo B compra frota "quando necessária" (capacidade 12.000 ha/unidade, R$ 120 mil/unidade).
         </p>
       </div>
     </div>
